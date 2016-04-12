@@ -26,6 +26,12 @@ func (gr goroot) switchRevision(rev string) (time.Duration, error) {
 	if err != nil {
 		return 0, fmt.Errorf("git checkout: %v, out: %s", err, out)
 	}
+	cleanCmd := exec.Command("git", "clean", "-f")
+	cleanCmd.Dir = gr.path
+	out, err = cleanCmd.CombinedOutput()
+	if err != nil {
+		return 0, fmt.Errorf("git clean: %v, out: %s", err, out)
+	}
 	log.Printf("compile go at %s", rev)
 	compileCmd := exec.Command("./make.bash")
 	compileCmd.Dir = filepath.Join(gr.path, "src")

@@ -3,15 +3,19 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"io"
 	"math"
 	"time"
 )
 
 type report struct {
+	gp               gopath
 	oldGoCompileTime time.Duration
 	newGoCompileTime time.Duration
 	oldResults       []result
 	newResults       []result
+	oldBenchmark     []byte
+	newBenchmark     []byte
 }
 
 func getStringPercents(rel float64) string {
@@ -26,7 +30,18 @@ func getStringPercents(rel float64) string {
 	return res
 }
 
-func (r report) Bytes() []byte {
+func (r report) writeComparison(w io.Writer) error {
+	compare, err := r.gp.BenchCmp(r.oldBenchmark, r.newBenchmark)
+	if err != nil {
+		return err
+	}
+	if _, err := w.Write(compare); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r report) Bytes() ([]byte, error) {
 	var b bytes.Buffer
 	diffs := r.getDiffReport()
 	b.WriteString("Compilation time:\n")
@@ -41,10 +56,17 @@ func (r report) Bytes() []byte {
 		b.WriteString(line)
 	}
 	b.WriteString("\n")
+	b.WriteString("Bechmarks:\n")
+	b.Write(r.newBenchmark)
+	b.WriteString("\n")
+	if err := r.writeComparison(&b); err != nil {
+		return nil, err
+	}
+	b.WriteString("\n")
 	b.WriteString("Highlights: \n")
 	b.WriteString("\t<-------------------HIGHLIGHTS HERE---------------------->\n")
 	b.WriteString("\n")
-	return b.Bytes()
+	return b.Bytes(), nil
 }
 
 type diffResult struct {

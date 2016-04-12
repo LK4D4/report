@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
@@ -29,7 +31,7 @@ func (gp gopath) setGopath(cmd *exec.Cmd) {
 }
 
 func (gp gopath) GoGet(pkg ...string) error {
-	args := append([]string{"get", "-d"}, pkg...)
+	args := append([]string{"get", "-u", "-d", "-t"}, pkg...)
 	cmd := exec.Command("go", args...)
 	gp.setGopath(cmd)
 	out, err := cmd.CombinedOutput()
@@ -77,4 +79,61 @@ func (gp gopath) RunTest(pkg string, samples int) (result, error) {
 		gp.CleanPkg()
 	}
 	return r, nil
+}
+
+func (gp gopath) RunBenchmark(pkg string) ([]byte, error) {
+	log.Printf("Run Benchmarks %s", pkg)
+	if err := gp.GoGet(pkg); err != nil {
+		return nil, err
+	}
+	cmd := exec.Command("go", "test", "-bench=.", "-benchmem", pkg)
+	gp.setGopath(cmd)
+	var stderr bytes.Buffer
+	var stdout bytes.Buffer
+	cmd.Stderr = &stderr
+	cmd.Stdout = &stdout
+	err := cmd.Run()
+	if err != nil {
+		return nil, fmt.Errorf("go test -bench: %v, out: %s", err, stderr.String())
+	}
+	return stdout.Bytes(), nil
+}
+
+func (gp gopath) installBenchCmp() error {
+	cmd := exec.Command("go", "get", "golang.org/x/tools/cmd/benchcmp")
+	gp.setGopath(cmd)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("go get: %v, out: %s", err, out)
+	}
+	return nil
+}
+
+func (gp gopath) BenchCmp(old []byte, new []byte) ([]byte, error) {
+	if err := gp.installBenchCmp(); err != nil {
+		return nil, err
+	}
+	oldFile, err := ioutil.TempFile("", "report-bench-")
+	if err != nil {
+		return nil, err
+	}
+	newFile, err := ioutil.TempFile("", "report-bench-")
+	if err != nil {
+		return nil, err
+	}
+	if _, err := oldFile.Write(old); err != nil {
+		return nil, err
+	}
+	oldFile.Close()
+	if _, err := newFile.Write(new); err != nil {
+		return nil, err
+	}
+	newFile.Close()
+
+	cmd := exec.Command(filepath.Join(gp.path, "bin", "benchcmp"), oldFile.Name(), newFile.Name())
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return nil, fmt.Errorf("benchcmp: %v, out: %s", err, out)
+	}
+	return out, nil
 }

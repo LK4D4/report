@@ -9,6 +9,8 @@ import (
 	"time"
 )
 
+const samplesCount = 5
+
 var testPackages = []string{
 	"github.com/coreos/etcd",
 	"github.com/boltdb/bolt/cmd/bolt",
@@ -18,6 +20,8 @@ var testPackages = []string{
 	"github.com/nsqio/nsq/apps/nsqd",
 	"github.com/mholt/caddy",
 }
+
+const bencmark = "github.com/alecthomas/go_serialization_benchmarks"
 
 const defaultReportName = "report.txt"
 
@@ -42,6 +46,13 @@ func main() {
 		log.Fatalf("build report: %v", err)
 	}
 
+	oldBench, err := gp.RunBenchmark(bencmark)
+	if err != nil {
+		log.Fatalf("benchmark run: %v", err)
+	}
+
+	gp.CleanPkg()
+
 	log.Printf("Switch go to %s", os.Args[2])
 	newDur, err := gr.switchRevision(os.Args[2])
 	if err != nil {
@@ -51,16 +62,25 @@ func main() {
 	if err != nil {
 		log.Fatalf("build report: %v", err)
 	}
+
+	newBench, err := gp.RunBenchmark(bencmark)
+	if err != nil {
+		log.Fatalf("benchmark run: %v", err)
+	}
+
 	report := report{
+		gp:               gp,
 		oldGoCompileTime: oldDur,
 		newGoCompileTime: newDur,
 		oldResults:       oldResults,
 		newResults:       newResults,
+		oldBenchmark:     oldBench,
+		newBenchmark:     newBench,
 	}
 	if err := writeReport(defaultReportName, gr, report); err != nil {
 		log.Fatalf("write report file: %v", err)
 	}
-	log.Println("report build: %v", time.Since(start))
+	log.Println("report build:", time.Since(start))
 }
 
 func writeReport(name string, gr goroot, report report) error {
@@ -71,7 +91,11 @@ func writeReport(name string, gr goroot, report report) error {
 	var b bytes.Buffer
 	b.WriteString(fmt.Sprintf("Number of commits: %d\n", gl.cnt))
 	b.WriteString("\n")
-	b.Write(report.Bytes())
+	bts, err := report.Bytes()
+	if err != nil {
+		return err
+	}
+	b.Write(bts)
 	b.WriteString("\n")
 	b.Write(gl.log)
 	return ioutil.WriteFile(name, b.Bytes(), 0666)
@@ -102,8 +126,6 @@ func initGopath(pkg ...string) (gopath, error) {
 	}
 	return gp, nil
 }
-
-const samplesCount = 5
 
 func getResult(gp gopath, pkg ...string) ([]result, error) {
 	var results []result
