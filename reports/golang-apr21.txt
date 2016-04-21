@@ -1,0 +1,2925 @@
+Number of commits: 125
+
+NOTE: etcd was excluded because it doesn't compile due to grpc changes
+
+Compilation time:
+	* github.com/boltdb/bolt/cmd/bolt: from 616.387828ms to 608.214362ms, -1.33%
+	* github.com/gogits/gogs: from 15.261902388s to 15.077212489s, -1.21%
+	* github.com/spf13/hugo: from 7.572419367s to 7.442231971s, -1.72%
+	* github.com/influxdata/influxdb/cmd/influxd: from 7.134895405s to 7.061516979s, -1.03%
+	* github.com/nsqio/nsq/apps/nsqd: from 2.488679928s to 2.44750362s, -1.65%
+	* github.com/mholt/caddy: from 5.572195354s to 5.444731663s, -2.29%
+
+Binary size:
+	* github.com/boltdb/bolt/cmd/bolt: from 2618526 to 2593283, -0.96%
+	* github.com/gogits/gogs: from 23021534 to 22906574, -0.50%
+	* github.com/spf13/hugo: from 14992636 to 14913467, -0.53%
+	* github.com/influxdata/influxdb/cmd/influxd: from 15707782 to 15624774, -0.53%
+	* github.com/nsqio/nsq/apps/nsqd: from 9845751 to 9796747, -0.50%
+	* github.com/mholt/caddy: from 13283927 to 13227799, -0.42%
+
+Bechmarks:
+BenchmarkMsgpMarshal-4                   	10000000	       204 ns/op	     128 B/op	       1 allocs/op
+BenchmarkMsgpUnmarshal-4                 	 3000000	       402 ns/op	     112 B/op	       3 allocs/op
+BenchmarkVmihailencoMsgpackMarshal-4     	 1000000	      2091 ns/op	     352 B/op	       5 allocs/op
+BenchmarkVmihailencoMsgpackUnmarshal-4   	 1000000	      1944 ns/op	     352 B/op	      13 allocs/op
+BenchmarkJsonMarshal-4                   	  500000	      3450 ns/op	    1232 B/op	      10 allocs/op
+BenchmarkJsonUnmarshal-4                 	  500000	      3603 ns/op	     416 B/op	       7 allocs/op
+BenchmarkEasyJsonMarshal-4               	 1000000	      1478 ns/op	     784 B/op	       5 allocs/op
+BenchmarkEasyJsonUnmarshal-4             	 1000000	      1495 ns/op	     160 B/op	       4 allocs/op
+BenchmarkBsonMarshal-4                   	 1000000	      1563 ns/op	     392 B/op	      10 allocs/op
+BenchmarkBsonUnmarshal-4                 	 1000000	      2051 ns/op	     248 B/op	      21 allocs/op
+BenchmarkGobMarshal-4                    	 1000000	      1072 ns/op	      48 B/op	       2 allocs/op
+BenchmarkGobUnmarshal-4                  	 1000000	      1121 ns/op	     112 B/op	       3 allocs/op
+BenchmarkXdrMarshal-4                    	 1000000	      1744 ns/op	     455 B/op	      20 allocs/op
+BenchmarkXdrUnmarshal-4                  	 1000000	      1559 ns/op	     240 B/op	      11 allocs/op
+BenchmarkUgorjiCodecMsgpackMarshal-4     	  500000	      3050 ns/op	    2752 B/op	       8 allocs/op
+BenchmarkUgorjiCodecMsgpackUnmarshal-4   	  500000	      3329 ns/op	    3008 B/op	       6 allocs/op
+BenchmarkUgorjiCodecBincMarshal-4        	  500000	      3095 ns/op	    2784 B/op	       8 allocs/op
+BenchmarkUgorjiCodecBincUnmarshal-4      	  500000	      3589 ns/op	    3168 B/op	       9 allocs/op
+BenchmarkSerealMarshal-4                 	  500000	      3481 ns/op	     912 B/op	      21 allocs/op
+BenchmarkSerealUnmarshal-4               	  500000	      3664 ns/op	    1008 B/op	      34 allocs/op
+BenchmarkBinaryMarshal-4                 	 1000000	      1591 ns/op	     256 B/op	      16 allocs/op
+BenchmarkBinaryUnmarshal-4               	 1000000	      1824 ns/op	     335 B/op	      22 allocs/op
+BenchmarkFlatbuffersMarshal-4            	 5000000	       365 ns/op	       0 B/op	       0 allocs/op
+BenchmarkFlatBuffersUnmarshal-4          	 5000000	       305 ns/op	     112 B/op	       3 allocs/op
+BenchmarkCapNProtoMarshal-4              	 3000000	       511 ns/op	      56 B/op	       2 allocs/op
+BenchmarkCapNProtoUnmarshal-4            	 3000000	       507 ns/op	     200 B/op	       6 allocs/op
+BenchmarkCapNProto2Marshal-4             	 1000000	      1207 ns/op	     244 B/op	       3 allocs/op
+BenchmarkCapNProto2Unmarshal-4           	 1000000	      1209 ns/op	     320 B/op	       6 allocs/op
+BenchmarkHproseMarshal-4                 	 1000000	      1111 ns/op	     473 B/op	       8 allocs/op
+BenchmarkHproseUnmarshal-4               	 1000000	      1247 ns/op	     320 B/op	      10 allocs/op
+BenchmarkProtobufMarshal-4               	 1000000	      1167 ns/op	     200 B/op	       7 allocs/op
+BenchmarkProtobufUnmarshal-4             	 2000000	       773 ns/op	     192 B/op	      10 allocs/op
+BenchmarkGoprotobufMarshal-4             	 2000000	       608 ns/op	     312 B/op	       4 allocs/op
+BenchmarkGoprotobufUnmarshal-4           	 2000000	       868 ns/op	     432 B/op	       9 allocs/op
+BenchmarkGogoprotobufMarshal-4           	10000000	       182 ns/op	      64 B/op	       1 allocs/op
+BenchmarkGogoprotobufUnmarshal-4         	 5000000	       276 ns/op	      96 B/op	       3 allocs/op
+BenchmarkGencodeMarshal-4                	10000000	       194 ns/op	      80 B/op	       2 allocs/op
+BenchmarkGencodeUnmarshal-4              	 5000000	       244 ns/op	     112 B/op	       3 allocs/op
+BenchmarkGencodeUnsafeMarshal-4          	10000000	       122 ns/op	      48 B/op	       1 allocs/op
+BenchmarkGencodeUnsafeUnmarshal-4        	10000000	       205 ns/op	      96 B/op	       3 allocs/op
+PASS
+ok  	github.com/alecthomas/go_serialization_benchmarks	69.800s
+
+benchmark                                  old ns/op     new ns/op     delta
+BenchmarkMsgpMarshal-4                     212           204           -3.77%
+BenchmarkMsgpUnmarshal-4                   401           402           +0.25%
+BenchmarkVmihailencoMsgpackMarshal-4       1775          2091          +17.80%
+BenchmarkVmihailencoMsgpackUnmarshal-4     1827          1944          +6.40%
+BenchmarkJsonMarshal-4                     3436          3450          +0.41%
+BenchmarkJsonUnmarshal-4                   3391          3603          +6.25%
+BenchmarkEasyJsonMarshal-4                 1558          1478          -5.13%
+BenchmarkEasyJsonUnmarshal-4               1520          1495          -1.64%
+BenchmarkBsonMarshal-4                     1556          1563          +0.45%
+BenchmarkBsonUnmarshal-4                   2090          2051          -1.87%
+BenchmarkGobMarshal-4                      1118          1072          -4.11%
+BenchmarkGobUnmarshal-4                    1114          1121          +0.63%
+BenchmarkXdrMarshal-4                      1923          1744          -9.31%
+BenchmarkXdrUnmarshal-4                    1461          1559          +6.71%
+BenchmarkUgorjiCodecMsgpackMarshal-4       2943          3050          +3.64%
+BenchmarkUgorjiCodecMsgpackUnmarshal-4     3215          3329          +3.55%
+BenchmarkUgorjiCodecBincMarshal-4          3028          3095          +2.21%
+BenchmarkUgorjiCodecBincUnmarshal-4        3529          3589          +1.70%
+BenchmarkSerealMarshal-4                   3584          3481          -2.87%
+BenchmarkSerealUnmarshal-4                 3758          3664          -2.50%
+BenchmarkBinaryMarshal-4                   1657          1591          -3.98%
+BenchmarkBinaryUnmarshal-4                 1875          1824          -2.72%
+BenchmarkFlatbuffersMarshal-4              368           365           -0.82%
+BenchmarkFlatBuffersUnmarshal-4            302           305           +0.99%
+BenchmarkCapNProtoMarshal-4                540           511           -5.37%
+BenchmarkCapNProtoUnmarshal-4              530           507           -4.34%
+BenchmarkCapNProto2Marshal-4               1254          1207          -3.75%
+BenchmarkCapNProto2Unmarshal-4             1244          1209          -2.81%
+BenchmarkHproseMarshal-4                   1089          1111          +2.02%
+BenchmarkHproseUnmarshal-4                 1272          1247          -1.97%
+BenchmarkProtobufMarshal-4                 1173          1167          -0.51%
+BenchmarkProtobufUnmarshal-4               878           773           -11.96%
+BenchmarkGoprotobufMarshal-4               632           608           -3.80%
+BenchmarkGoprotobufUnmarshal-4             917           868           -5.34%
+BenchmarkGogoprotobufMarshal-4             193           182           -5.70%
+BenchmarkGogoprotobufUnmarshal-4           278           276           -0.72%
+BenchmarkGencodeMarshal-4                  199           194           -2.51%
+BenchmarkGencodeUnmarshal-4                240           244           +1.67%
+BenchmarkGencodeUnsafeMarshal-4            124           122           -1.61%
+BenchmarkGencodeUnsafeUnmarshal-4          198           205           +3.54%
+
+benchmark                                  old allocs     new allocs     delta
+BenchmarkMsgpMarshal-4                     1              1              +0.00%
+BenchmarkMsgpUnmarshal-4                   3              3              +0.00%
+BenchmarkVmihailencoMsgpackMarshal-4       5              5              +0.00%
+BenchmarkVmihailencoMsgpackUnmarshal-4     13             13             +0.00%
+BenchmarkJsonMarshal-4                     10             10             +0.00%
+BenchmarkJsonUnmarshal-4                   7              7              +0.00%
+BenchmarkEasyJsonMarshal-4                 5              5              +0.00%
+BenchmarkEasyJsonUnmarshal-4               4              4              +0.00%
+BenchmarkBsonMarshal-4                     10             10             +0.00%
+BenchmarkBsonUnmarshal-4                   21             21             +0.00%
+BenchmarkGobMarshal-4                      2              2              +0.00%
+BenchmarkGobUnmarshal-4                    3              3              +0.00%
+BenchmarkXdrMarshal-4                      21             20             -4.76%
+BenchmarkXdrUnmarshal-4                    11             11             +0.00%
+BenchmarkUgorjiCodecMsgpackMarshal-4       8              8              +0.00%
+BenchmarkUgorjiCodecMsgpackUnmarshal-4     6              6              +0.00%
+BenchmarkUgorjiCodecBincMarshal-4          8              8              +0.00%
+BenchmarkUgorjiCodecBincUnmarshal-4        9              9              +0.00%
+BenchmarkSerealMarshal-4                   21             21             +0.00%
+BenchmarkSerealUnmarshal-4                 34             34             +0.00%
+BenchmarkBinaryMarshal-4                   16             16             +0.00%
+BenchmarkBinaryUnmarshal-4                 22             22             +0.00%
+BenchmarkFlatbuffersMarshal-4              0              0              +0.00%
+BenchmarkFlatBuffersUnmarshal-4            3              3              +0.00%
+BenchmarkCapNProtoMarshal-4                2              2              +0.00%
+BenchmarkCapNProtoUnmarshal-4              6              6              +0.00%
+BenchmarkCapNProto2Marshal-4               3              3              +0.00%
+BenchmarkCapNProto2Unmarshal-4             6              6              +0.00%
+BenchmarkHproseMarshal-4                   8              8              +0.00%
+BenchmarkHproseUnmarshal-4                 10             10             +0.00%
+BenchmarkProtobufMarshal-4                 7              7              +0.00%
+BenchmarkProtobufUnmarshal-4               10             10             +0.00%
+BenchmarkGoprotobufMarshal-4               4              4              +0.00%
+BenchmarkGoprotobufUnmarshal-4             9              9              +0.00%
+BenchmarkGogoprotobufMarshal-4             1              1              +0.00%
+BenchmarkGogoprotobufUnmarshal-4           3              3              +0.00%
+BenchmarkGencodeMarshal-4                  2              2              +0.00%
+BenchmarkGencodeUnmarshal-4                3              3              +0.00%
+BenchmarkGencodeUnsafeMarshal-4            1              1              +0.00%
+BenchmarkGencodeUnsafeUnmarshal-4          3              3              +0.00%
+
+benchmark                                  old bytes     new bytes     delta
+BenchmarkMsgpMarshal-4                     128           128           +0.00%
+BenchmarkMsgpUnmarshal-4                   112           112           +0.00%
+BenchmarkVmihailencoMsgpackMarshal-4       352           352           +0.00%
+BenchmarkVmihailencoMsgpackUnmarshal-4     352           352           +0.00%
+BenchmarkJsonMarshal-4                     1232          1232          +0.00%
+BenchmarkJsonUnmarshal-4                   416           416           +0.00%
+BenchmarkEasyJsonMarshal-4                 784           784           +0.00%
+BenchmarkEasyJsonUnmarshal-4               160           160           +0.00%
+BenchmarkBsonMarshal-4                     392           392           +0.00%
+BenchmarkBsonUnmarshal-4                   248           248           +0.00%
+BenchmarkGobMarshal-4                      48            48            +0.00%
+BenchmarkGobUnmarshal-4                    112           112           +0.00%
+BenchmarkXdrMarshal-4                      456           455           -0.22%
+BenchmarkXdrUnmarshal-4                    239           240           +0.42%
+BenchmarkUgorjiCodecMsgpackMarshal-4       2753          2752          -0.04%
+BenchmarkUgorjiCodecMsgpackUnmarshal-4     3008          3008          +0.00%
+BenchmarkUgorjiCodecBincMarshal-4          2785          2784          -0.04%
+BenchmarkUgorjiCodecBincUnmarshal-4        3168          3168          +0.00%
+BenchmarkSerealMarshal-4                   912           912           +0.00%
+BenchmarkSerealUnmarshal-4                 1008          1008          +0.00%
+BenchmarkBinaryMarshal-4                   256           256           +0.00%
+BenchmarkBinaryUnmarshal-4                 336           335           -0.30%
+BenchmarkFlatbuffersMarshal-4              0             0             +0.00%
+BenchmarkFlatBuffersUnmarshal-4            112           112           +0.00%
+BenchmarkCapNProtoMarshal-4                56            56            +0.00%
+BenchmarkCapNProtoUnmarshal-4              200           200           +0.00%
+BenchmarkCapNProto2Marshal-4               244           244           +0.00%
+BenchmarkCapNProto2Unmarshal-4             320           320           +0.00%
+BenchmarkHproseMarshal-4                   473           473           +0.00%
+BenchmarkHproseUnmarshal-4                 320           320           +0.00%
+BenchmarkProtobufMarshal-4                 200           200           +0.00%
+BenchmarkProtobufUnmarshal-4               192           192           +0.00%
+BenchmarkGoprotobufMarshal-4               312           312           +0.00%
+BenchmarkGoprotobufUnmarshal-4             432           432           +0.00%
+BenchmarkGogoprotobufMarshal-4             64            64            +0.00%
+BenchmarkGogoprotobufUnmarshal-4           96            96            +0.00%
+BenchmarkGencodeMarshal-4                  80            80            +0.00%
+BenchmarkGencodeUnmarshal-4                112           112           +0.00%
+BenchmarkGencodeUnsafeMarshal-4            48            48            +0.00%
+BenchmarkGencodeUnsafeUnmarshal-4          96            96            +0.00%
+
+Highlights: 
+	* https://github.com/golang/go/issues?q=milestone%3AGo1.6.2 go1.6.2 released
+	* https://github.com/golang/go/commit/89a1f02834f1472cf307b222e14884ebd41086d3 hash/adler32: Unroll loop for extra performance.
+	* https://github.com/golang/go/commit/f60fcca5f1e7b7a33e219ec45d4bd9dc58dd2552 net: fix plan9 after context change, propagate contexts more
+	* https://github.com/golang/go/commit/b6b4004d5a5bf7099ac9ab76777797236da7fe63 net: context plumbing, add Dialer.DialContext
+	* https://github.com/golang/go/commit/585590549a3c6e26e7963081e11478a1913744a6 net/http: add Transport.Dialer, plumb RoundTrip contexts to net package
+	* https://github.com/golang/go/commit/6ec481b06c1ceba5792e355ca45f7476bb78f21f compress/flate: use uncompressed if dynamic encoding is larger
+	* https://github.com/golang/go/commit/55ab07c224a358cabe795fb1e52a627194d7daee cmd/compile: static composite literals are side-effect free
+	* https://github.com/golang/go/commit/a4dd6ea1524901fab5deac60772345babd058ae7 runtime: add maxSliceCap
+	* https://github.com/golang/go/commit/0150f15a924a7b4ac0c794012f6b12c8aa406b54 runtime: call mallocgc directly from makeslice and growslice
+
+
+commit 7d56215bcbc5a2ef5e59805271b0ca6a4fd56e4d
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Tue Apr 19 14:02:21 2016 -0400
+
+    cmd/link: convert textp into a slice
+    
+    Updates #15374
+    
+    Change-Id: I3ea715735862fe9550b88d7a29def6cb9d4419a6
+    Reviewed-on: https://go-review.googlesource.com/22243
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+
+commit 5a0881a1d1797a5f34c33ec4cf67cb97cc1aa634
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Tue Apr 19 08:59:56 2016 -0400
+
+    cmd/link: calculate section alignment concurrently
+    
+    Reduces link time for cmd/go by 1%.
+    
+    Change-Id: Iad4a16db0aedc56f81ddf73ba9b632e418dc1b19
+    Reviewed-on: https://go-review.googlesource.com/22242
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 45522a6a93efe0fd487f6875f2b104d772a26469
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Thu Apr 21 11:44:05 2016 +1000
+
+    debug/pe: introduce Section.Relocs
+    
+    cmd/link reads PE object files when building programs with cgo.
+    cmd/link accesses object relocations. Add new Section.Relocs that
+    provides similar functionality in debug/pe.
+    
+    Updates #15345
+    
+    Change-Id: I34de91b7f18cf1c9e4cdb3aedd685486a625ac92
+    Reviewed-on: https://go-review.googlesource.com/22332
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Alex Brainman <alex.brainman@gmail.com>
+
+commit e48434887e568fa96800a0dff36ab45bc844ea04
+Author: Keith Randall <khr@golang.org>
+Date:   Wed Apr 20 21:46:39 2016 -0700
+
+    cmd/compile: fix ssa/check/on build
+    
+    Disable phielimValue from rewrite pass for now.
+    
+    Change-Id: I9f3bb1f527b50bc7a21cc6b7cb89f6136efd81e8
+    Reviewed-on: https://go-review.googlesource.com/22335
+    Run-TryBot: Keith Randall <khr@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit 7e460e70d90295cf08ea627c0a0fff170aba5518
+Author: Martin Möhrmann <martisch@uos.de>
+Date:   Wed Apr 20 18:00:52 2016 +0200
+
+    runtime: use type int to specify size for newarray
+    
+    Consistently use type int for the size argument of
+    runtime.newarray, runtime.reflect_unsafe_NewArray
+    and reflect.unsafe_NewArray.
+    
+    Change-Id: Ic77bf2dde216c92ca8c49462f8eedc0385b6314e
+    Reviewed-on: https://go-review.googlesource.com/22311
+    Reviewed-by: Keith Randall <khr@golang.org>
+    Run-TryBot: Martin Möhrmann <martisch@uos.de>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 4938d7b5fc06bbd137619eddd494a8cca288eb25
+Author: Keith Randall <khr@golang.org>
+Date:   Wed Apr 20 17:29:50 2016 -0700
+
+    cmd/compile: fix dominator check in check()
+    
+    Ancestor comparison was the wrong way around, effectively
+    disabling the def-must-dominate-use check.
+    
+    Update #15084
+    
+    Change-Id: Ic56d674c5000569d2cc855bbb000a60eae517c7c
+    Reviewed-on: https://go-review.googlesource.com/22330
+    Run-TryBot: Keith Randall <khr@golang.org>
+    Reviewed-by: Josh Bleecher Snyder <josharian@gmail.com>
+
+commit 9568d54fb8d89267304d23cac23190f55ec95683
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 20 19:10:20 2016 -0400
+
+    cmd/link: fix reordering of plt/rel
+    
+    For the Solaris and S/390 builders.
+    
+    Change-Id: Id9a83e0df91e6d0df8488ec5e2a546ba8e2d800e
+    Reviewed-on: https://go-review.googlesource.com/22327
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+    Reviewed-by: Michael Munday <munday@ca.ibm.com>
+
+commit 11f1041022e001869de076699f297b28d25fc558
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Thu Apr 21 10:42:25 2016 +1000
+
+    debug/pe: update cstring documentation
+    
+    Updates #15345
+    
+    Change-Id: If1fca1f6042571cb0ac689bbb3c294309dd6e7b4
+    Reviewed-on: https://go-review.googlesource.com/22331
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+    Run-TryBot: Alex Brainman <alex.brainman@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 285a18436d480ef91b2af236d5ddd2fa7fa49de8
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Wed Apr 20 15:58:55 2016 +1000
+
+    debug/pe: pretty section.go code
+    
+    Introduce (*SectionHeader32).fullName and add documentation comments.
+    
+    Updates #15345
+    
+    Change-Id: I8f3b8ab9492642d62e7aad010c91c68daea3f14b
+    Reviewed-on: https://go-review.googlesource.com/22301
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+    Run-TryBot: Alex Brainman <alex.brainman@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 75b886ab790782f34945c0e1b0dee4189399ac9e
+Author: Tal Shprecher <tshprecher@gmail.com>
+Date:   Wed Apr 20 14:05:48 2016 -0700
+
+    cmd/compile: reject embedded unsafe.Pointer values
+    
+    Fixes #14729
+    
+    Change-Id: Ied819aa7b23e25de30aa8cde049c97297b4cab11
+    Reviewed-on: https://go-review.googlesource.com/22325
+    Reviewed-by: Matthew Dempsky <mdempsky@google.com>
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit f4f1b30749be167b7c5ecb7c775c2acd8d32ae9e
+Author: Robert Griesemer <gri@golang.org>
+Date:   Wed Apr 20 16:41:43 2016 -0700
+
+    cmd/compile: accept old and new import format for builtin declarations
+    
+    Test with forceNewExport set to true (but continues to be disabled by
+    default for now).
+    
+    Fixes #15322.
+    
+    Change-Id: I3b893db2206cbb79e66339284f22f4a0b20bf137
+    Reviewed-on: https://go-review.googlesource.com/22328
+    Reviewed-by: Matthew Dempsky <mdempsky@google.com>
+
+commit ed41054b6d1306537df0ba3a34d11579ae2c1829
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Mon Apr 18 14:50:14 2016 -0400
+
+    cmd/link: process data symbols with slices
+    
+    First (and largest single) step to switching cmd/link from linked
+    lists of symbols to slices.
+    
+    Sort sections independently and concurrently.
+    This reduces jujud link times on linux/amd64 by ~4%.
+    
+    Updates #15374
+    
+    Change-Id: I452bc8f33081039468636502fe3c1cc8d6ed9efa
+    Reviewed-on: https://go-review.googlesource.com/22205
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+
+commit cda0aa16807b20410e57992b09570f6a9dd11f9b
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 20 10:36:49 2016 -0400
+
+    cmd/link: cleanup Datablk debug printing
+    
+    (Split out from CL 22205.)
+    
+    Change-Id: I45838dda8ea8c451b4388b8aade2c209cde2c0e1
+    Reviewed-on: https://go-review.googlesource.com/22299
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+    Run-TryBot: Michael Hudson-Doyle <michael.hudson@canonical.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 0fec75f5ca6a75962fb5037f59a1743659ac3bf3
+Author: Lynn Boger <laboger@linux.vnet.ibm.com>
+Date:   Wed Apr 20 08:15:07 2016 -0500
+
+    crypto/md5: add assembly implementation on ppc64le
+    
+    This change improves the performance of the block
+    function used within crypto/md5 on ppc64le.  The following
+    improvement was seen:
+    
+    BenchmarkHash8Bytes              8.39         26.04        3.10x
+    BenchmarkHash1K                  99.41        407.84       4.10x
+    BenchmarkHash8K                  108.87       460.00       4.23x
+    BenchmarkHash8BytesUnaligned     8.39         25.80        3.08x
+    BenchmarkHash1KUnaligned         89.94        407.81       4.53x
+    BenchmarkHash8KUnaligned         96.57        459.22       4.76x
+    
+    Fixes #15385
+    
+    Change-Id: I8af5af089cc3e3740c33c662003d104de5fe1d1b
+    Reviewed-on: https://go-review.googlesource.com/22294
+    Run-TryBot: Michael Munday <munday@ca.ibm.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit aea224386ea7c10c07490bb6cdef12a51fa9a9cf
+Author: Robert Griesemer <gri@golang.org>
+Date:   Wed Apr 20 13:40:55 2016 -0700
+
+    math/big: more tests, documentation for Flot gob marshalling
+    
+    Follow-up to https://golang.org/cl/21755.
+    This turned out to be a bit more than just a few nits
+    as originally expected in that CL.
+    
+    1) The actual mantissa may be shorter than required for the
+       given precision (because of trailing 0's): no need to
+       allocate space for it (and transmit 0's). This can save
+       a lot of space when the precision is high: E.g., for
+       prec == 1000, 16 words or 128 bytes are required at the
+       most, but if the actual number is short, it may be much
+       less (for the test cases present, it's significantly less).
+    
+    2) The actual mantissa may be longer than the number of
+       words required for the given precision: make sure to
+       not overflow when encoding in bytes.
+    
+    3) Add more documentation.
+    
+    4) Add more tests.
+    
+    Change-Id: I9f40c408cfdd9183a8e81076d2f7d6c75e7a00e9
+    Reviewed-on: https://go-review.googlesource.com/22324
+    Reviewed-by: Alan Donovan <adonovan@google.com>
+
+commit 60fd32a47fdffb95d3646c9fc75acc9beff67183
+Author: Keith Randall <khr@golang.org>
+Date:   Tue Apr 19 08:31:04 2016 -0700
+
+    cmd/compile: change the way we handle large map values
+    
+    mapaccess{1,2} returns a pointer to the value.  When the key
+    is not in the map, it returns a pointer to zeroed memory.
+    Currently, for large map values we have a complicated scheme which
+    dynamically allocates zeroed memory for this purpose.  It is ugly
+    code and requires an atomic.Load in a bunch of places we'd rather
+    not have it.
+    
+    Switch to a scheme where callsites of mapaccess{1,2} which expect
+    large return values pass in a pointer to zeroed memory that
+    mapaccess can return if the key is not found.  This avoids the
+    atomic.Load on all map accesses with a few extra instructions only
+    for the large value acccesses, plus a bit of bss space.
+    
+    There was a time (1.4 & 1.5?) where we did something like this but
+    all the tricks to make the right size zero value were done by the
+    linker.  That scheme broke in the presence of dyamic linking.
+    The scheme in this CL works even when dynamic linking.
+    
+    Fixes #12337
+    
+    Change-Id: Ic2d0319944af33bbb59785938d9ab80958d1b4b1
+    Reviewed-on: https://go-review.googlesource.com/22221
+    Run-TryBot: Keith Randall <khr@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+
+commit bc33dd7432369b3abd2a6fd75cb57d6c5c3defa7
+Author: Rob Pike <r@golang.org>
+Date:   Wed Apr 20 08:56:33 2016 -0700
+
+    doc/faq: reword the link to the generics proposal
+    
+    A late response to CL 22163.
+    
+    Change-Id: I5275a22af7081875af0256da296811f4fe9832dc
+    Reviewed-on: https://go-review.googlesource.com/22296
+    Reviewed-by: David Symonds <dsymonds@golang.org>
+
+commit 79c527f4a7643b6cc9e49f5e919d6f4a44f492ca
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 20 14:40:18 2016 -0400
+
+    cmd/link: move ppc64 genplt declarations into loop
+    
+    (Split out from CL 22243.)
+    
+    Change-Id: I07709a0c417e7a57e839e5085a37db7d5fbf3a35
+    Reviewed-on: https://go-review.googlesource.com/22322
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 854ab14b7e20a419620a42b837a9cf45cbca8189
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 20 14:22:20 2016 -0400
+
+    cmd/link: move pcln declarations into loops
+    
+    (Split out from CL 22243.)
+    
+    Change-Id: Idac1748c8db2b2ed0484e4afadb105c471c6ce34
+    Reviewed-on: https://go-review.googlesource.com/22321
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 1dad218da1239a8375b7fad5dd83e4a840e3fdbb
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 20 10:36:27 2016 -0400
+
+    cmd/link: move declarations into loops
+    
+    (Split out from CL 22205.)
+    
+    Change-Id: Id32698f48ce02b55c15b6f2842215e0ffdbf425b
+    Reviewed-on: https://go-review.googlesource.com/22298
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit d8c9dd604801958c649a32511deef373adeecfe0
+Author: OneOfOne <oneofone@gmail.com>
+Date:   Sun Apr 10 03:50:11 2016 +0200
+
+    math/big: implement GobDecode/Encode for big.Float
+    
+    Added GobEncode/Decode and a test for them.
+    
+    Fixes #14593
+    
+    Change-Id: Ic8d3efd24d0313a1a66f01da293c4c1fd39764a8
+    Reviewed-on: https://go-review.googlesource.com/21755
+    Reviewed-by: Robert Griesemer <gri@golang.org>
+
+commit 7acb642e4f0b77763a13c99c756aa846b01a428c
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 20 10:29:43 2016 -0400
+
+    test: print output on link -X failure
+    
+    (Split out from CL 22205.)
+    
+    Change-Id: Iab66ac2a1cd3716966d8e59c570931bce95aba9b
+    Reviewed-on: https://go-review.googlesource.com/22297
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 46efe0bc7fb1933c74d80cd3fe7c47f21d042a5d
+Author: Michael Munday <munday@ca.ibm.com>
+Date:   Fri Apr 15 18:45:17 2016 -0400
+
+    crypto/aes: add s390x assembly implementation
+    
+    Adds support for single block encryption using the cipher message
+    (KM) instruction. KM handles key expansion internally and
+    therefore it is not done up front when using the assembly
+    implementation on s390x.
+    
+    Change-Id: I69954b8ae36d549e1dc40d7acd5a10bedfaaef9c
+    Reviewed-on: https://go-review.googlesource.com/22194
+    Run-TryBot: Michael Munday <munday@ca.ibm.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Bill O'Farrell <billotosyr@gmail.com>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit b57ac333310e8b8ec01708dcca99430b641457c5
+Author: Keith Randall <khr@golang.org>
+Date:   Fri Apr 15 12:49:30 2016 -0700
+
+    cmd/compile: forward-looking desired register biasing
+    
+    Improve forward-looking desired register calculations.
+    It is now inter-block and handles a bunch more cases.
+    
+    Fixes #14504
+    Fixes #14828
+    Fixes #15254
+    
+    Change-Id: Ic240fa0ec6a779d80f577f55c8a6c4ac8c1a940a
+    Reviewed-on: https://go-review.googlesource.com/22160
+    Run-TryBot: Keith Randall <khr@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: David Chase <drchase@google.com>
+
+commit 30c278dbe907111b51737adb8ba0a9e1956f3ed5
+Author: Jamil Djadala <djadala@gmail.com>
+Date:   Wed Apr 20 09:08:28 2016 +0300
+
+    container/heap: correct number of elements in BenchmarkDup
+    
+    In BenchmarkDup fuction, heap is created as h := make(myHeap, n)
+    and then n elements are added, so first time there are 2*n elements
+    in heap.
+    
+    Fixes #15380
+    
+    Change-Id: I0508486a847006b3cd545fd695e8b09af339134f
+    Reviewed-on: https://go-review.googlesource.com/22310
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 001e8e8070e8ed3a578dbad93cc3f70257e965bd
+Author: Keith Randall <khr@golang.org>
+Date:   Tue Apr 19 19:35:10 2016 -0700
+
+    runtime: simplify mallocgc flag argument
+    
+    mallocgc can calculate noscan itself.  The only remaining
+    flag argument is needzero, so we just make that a boolean arg.
+    
+    Fixes #15379
+    
+    Change-Id: I839a70790b2a0c9dbcee2600052bfbd6c8148e20
+    Reviewed-on: https://go-review.googlesource.com/22290
+    Reviewed-by: Josh Bleecher Snyder <josharian@gmail.com>
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 731531980a36f1fa6434c947c54daf8ba530a65f
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Wed Apr 20 13:02:41 2016 +1000
+
+    debug/pe: move some code into section.go and symbol.go
+    
+    Just moving code. No code changes.
+    
+    Updates #15345
+    
+    Change-Id: I89c257b7aae4fbd78ce59a42909ecb3ff493659d
+    Reviewed-on: https://go-review.googlesource.com/22300
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit d697a9d5d7d75cecd8d49b95ed9a0d1f2f3e8ed4
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Mon Apr 18 16:12:48 2016 +1000
+
+    debug/pe: introduce StringTable type
+    
+    PE specification requires that long section and symbol names
+    are stored in PE string table. Introduce StringTable that
+    implements this functionality. Only string table reading is
+    implemented.
+    
+    Updates #15345
+    
+    Change-Id: Ib9638617f2ab1881ad707111d96fc68b0e47340e
+    Reviewed-on: https://go-review.googlesource.com/22181
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Alex Brainman <alex.brainman@gmail.com>
+
+commit 5183ad696c708ab5fc65006413019b1ef96aa91b
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Mon Apr 18 16:42:17 2016 +1000
+
+    debug/pe: add some documentation and TODO
+    
+    No code changes. Just moved ImportDirectory next to ImportedSymbols.
+    And moved useless FormatError to the bottom of file.go.
+    
+    Updates #15345
+    
+    Change-Id: I91ff243cefd18008b1c5ee9ec4326583deee431b
+    Reviewed-on: https://go-review.googlesource.com/22182
+    Reviewed-by: David Crawshaw <crawshaw@golang.org>
+    Run-TryBot: Alex Brainman <alex.brainman@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit bfe0cbdc50cbc6a632d1e5ebbdcc625d69451935
+Author: Keith Randall <khr@golang.org>
+Date:   Tue Apr 19 15:38:59 2016 -0700
+
+    cmd/compile,runtime: pass elem type to {make,grow}slice
+    
+    No point in passing the slice type to these functions.
+    All they need is the element type.  One less indirection,
+    maybe a few less []T type descriptors in the binary.
+    
+    Change-Id: Ib0b83b5f14ca21d995ecc199ce8ac00c4eb375e6
+    Reviewed-on: https://go-review.googlesource.com/22275
+    Reviewed-by: Josh Bleecher Snyder <josharian@gmail.com>
+
+commit 0150f15a924a7b4ac0c794012f6b12c8aa406b54
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Tue Apr 19 15:14:26 2016 -0700
+
+    runtime: call mallocgc directly from makeslice and growslice
+    
+    The extra checks provided by newarray are
+    redundant in these cases.
+    
+    This shrinks by one frame the call stack expected
+    by the pprof test.
+    
+    name                      old time/op  new time/op  delta
+    MakeSlice-8               34.3ns ± 2%  30.5ns ± 3%  -11.03%  (p=0.000 n=24+22)
+    GrowSlicePtr-8             134ns ± 2%   129ns ± 3%   -3.25%  (p=0.000 n=25+24)
+    
+    Change-Id: Icd828655906b921c732701fd9d61da3fa217b0af
+    Reviewed-on: https://go-review.googlesource.com/22276
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit 7b0ba1cff86429f0eb39b916fba54e3061fa5787
+Author: Andrew Gerrand <adg@golang.org>
+Date:   Wed Apr 20 09:16:00 2016 +1000
+
+    doc: document go1.6.2
+    
+    Change-Id: Ib3063719cf90dfad139dd723b3b16ef0b45e312e
+    Reviewed-on: https://go-review.googlesource.com/22251
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 2244ae417312a59e722643f6ea2f1b8168c599c9
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Tue Apr 19 14:15:37 2016 -0700
+
+    cmd/compile/internal/gc: simplify typecheck's Efoo consts
+    
+    There's no need for Eiota, Eindir, Eaddr, or Eproc; the values are
+    threaded through to denote various typechecking contexts, but they
+    don't actually influence typechecking behavior at all.
+    
+    Also, while here, switch the Efoo const declarations to use iota.
+    
+    Passes toolstash -cmp.
+    
+    Change-Id: I5cea869ccd0755c481cf071978f863474bc9c1ed
+    Reviewed-on: https://go-review.googlesource.com/22271
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 58012ea785851052a28f20544d7e2da0e0e6eefa
+Author: Julia Hansbrough <flowerhack@google.com>
+Date:   Mon Apr 18 15:53:29 2016 -0700
+
+    runtime: updated SIGSYS to cause a panic + stacktrace
+    
+    On GNU/Linux, SIGSYS is specified to cause the process to terminate
+    without a core dump. In https://codereview.appspot.com/3749041 , it
+    appears that Golang accidentally introduced incorrect behavior for
+    this signal, which caused Golang processes to keep running after
+    receiving SIGSYS. This change reverts it to the old/correct behavior.
+    
+    Updates #15204
+    
+    Change-Id: I3aa48a9499c1bc36fa5d3f40c088fdd7599e0db5
+    Reviewed-on: https://go-review.googlesource.com/22202
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 5e74d4095241655ce6bf6e5d32eeaeef353b614f
+Author: Robert Griesemer <gri@golang.org>
+Date:   Tue Apr 19 14:42:15 2016 -0700
+
+    strconv: fix ParseFloat for special forms of zero values
+    
+    Fixes #15364.
+    
+    Change-Id: Id2a349896064c7c9e00e36c55162068bf18162b2
+    Reviewed-on: https://go-review.googlesource.com/22272
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit ba7563019f4c5c78cbfd740da1ad68acee37885c
+Author: Brad Fitzpatrick <bradfitz@golang.org>
+Date:   Tue Apr 19 18:31:17 2016 +0000
+
+    crypto/x509: fix copy/paste-o in error message
+    
+    Fixes #15371
+    
+    Change-Id: Iff8d36e1bd9b5641f6b577a30ac6e967f973c939
+    Reviewed-on: https://go-review.googlesource.com/22240
+    Reviewed-by: Andrew Gerrand <adg@golang.org>
+
+commit 998c8e034c98fccb52b0692b97d36a5a6d3bd31a
+Author: Keith Randall <khr@golang.org>
+Date:   Tue Apr 19 12:48:09 2016 -0700
+
+    cmd/compile: convT2{I,E} don't handle direct interfaces
+    
+    We now inline type to interface conversions when the type
+    is pointer-shaped.  No need to keep code to handle that in
+    convT2{I,E}.
+    
+    Change-Id: I3a6668259556077cbb2986a9e8fe42a625d506c9
+    Reviewed-on: https://go-review.googlesource.com/22249
+    Run-TryBot: Keith Randall <khr@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Michel Lespinasse <walken@google.com>
+
+commit 8b20fd000d7e894865442134f9d6d197ac5dabed
+Author: Alexandru Moșoi <mosoi@google.com>
+Date:   Tue Apr 12 18:24:34 2016 +0200
+
+    cmd/compile: transform some Phis into Or8.
+    
+    func f(a, b bool) bool {
+              return a || b
+    }
+    
+    is now a single instructions (excluding loading and unloading the arguments):
+          v10 = ORB <bool> v11 v12 : AX
+    
+    Change-Id: Iff63399410cb46909f4318ea1c3f45a029f4aa5e
+    Reviewed-on: https://go-review.googlesource.com/21872
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Josh Bleecher Snyder <josharian@gmail.com>
+
+commit 082f464823cdb47042a142802776fa7874e6c05b
+Author: Robert Griesemer <gri@golang.org>
+Date:   Tue Apr 19 14:18:59 2016 -0700
+
+    go/types: trailing semis are ok after valid fallthrough
+    
+    Fixes #15376.
+    
+    Change-Id: I9ece80f26b83be129671c961120c157da2ac0079
+    Reviewed-on: https://go-review.googlesource.com/22270
+    Reviewed-by: Alan Donovan <adonovan@google.com>
+
+commit a4dd6ea1524901fab5deac60772345babd058ae7
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Tue Apr 19 09:18:59 2016 -0700
+
+    runtime: add maxSliceCap
+    
+    This avoids expensive division calculations
+    for many common slice element sizes.
+    
+    name                      old time/op  new time/op  delta
+    MakeSlice-8               51.9ns ± 3%  35.1ns ± 2%  -32.41%  (p=0.000 n=10+10)
+    GrowSliceBytes-8          44.1ns ± 2%  44.1ns ± 1%     ~     (p=0.984 n=10+10)
+    GrowSliceInts-8           60.9ns ± 3%  60.9ns ± 3%     ~     (p=0.698 n=10+10)
+    GrowSlicePtr-8             131ns ± 1%   120ns ± 2%   -8.41%   (p=0.000 n=8+10)
+    GrowSliceStruct24Bytes-8   111ns ± 2%   103ns ± 3%   -7.23%    (p=0.000 n=8+8)
+    
+    Change-Id: I2630eb3d73c814db030cad16e620ea7fecbbd312
+    Reviewed-on: https://go-review.googlesource.com/22223
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit 55ab07c224a358cabe795fb1e52a627194d7daee
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Tue Apr 19 12:26:28 2016 -0700
+
+    cmd/compile: static composite literals are side-effect free
+    
+    This extends CL 22192.
+    
+    This removes the remaining performance disparity
+    between non-SSA and SSA on the AppendInPlace benchmarks.
+    
+    Going from non-SSA to SSA:
+    
+    AppendInPlace/NoGrow/2Ptr-8  1.60µs ± 5%  1.53µs ± 5%  -4.04%  (p=0.000 n=15+14)
+    AppendInPlace/NoGrow/3Ptr-8  2.04µs ± 3%  1.96µs ± 2%  -3.90%  (p=0.000 n=13+14)
+    AppendInPlace/NoGrow/4Ptr-8  2.83µs ± 8%  2.62µs ± 4%  -7.39%  (p=0.000 n=13+15)
+    
+    Previously these were 20% regressions.
+    
+    Change-Id: Ie87810bffd598730658e07585f5e2ef979a12b8f
+    Reviewed-on: https://go-review.googlesource.com/22248
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit 3c6e60c0e41ed42d5df6dcbf134e3a664c08c154
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Tue Apr 19 12:08:33 2016 -0700
+
+    cmd/compile: fix isStaticCompositeLiteral
+    
+    Previously, isStaticCompositeLiteral would
+    return the wrong value for literals like:
+    
+    [1]struct{ b []byte }{b: []byte{1}}
+    
+    Note that the outermost component is an array,
+    but once we recurse into isStaticCompositeLiteral,
+    we never check again that arrays are actually arrays.
+    
+    Instead of adding more logic to the guts of
+    isStaticCompositeLiteral, allow it to accept
+    any Node and return the correct answer.
+    
+    Change-Id: I6af7814a9037bbc7043da9a96137fbee067bbe0e
+    Reviewed-on: https://go-review.googlesource.com/22247
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit 562d398aef1378c781a3164f59f54dd1b0f4638f
+Author: Robert Griesemer <gri@golang.org>
+Date:   Tue Apr 19 11:27:52 2016 -0700
+
+    go/types: accept trailing empty stmts in terminating stmt lists
+    
+    Per the latest spec refinement (https://golang.org/cl/19981).
+    
+    Fixes #14537.
+    
+    Change-Id: I2dedee942c4da21dc94bdeda466f133827ab5bb9
+    Reviewed-on: https://go-review.googlesource.com/22241
+    Run-TryBot: Robert Griesemer <gri@golang.org>
+    Reviewed-by: Alan Donovan <adonovan@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 9b6bf20a35130b2b0754f2ec54370e207e2f2d9b
+Author: Michael Munday <munday@ca.ibm.com>
+Date:   Fri Apr 15 16:56:37 2016 -0400
+
+    crypto/aes: de-couple asm and go implementations
+    
+    There is currently only one assembly implementation of AES
+    (amd64). While it is possible to fit other implementations to the
+    same pattern it complicates the code. For example s390x does not
+    use expanded keys, so having enc and dec in the aesCipher struct
+    is confusing.
+    
+    By separating out the asm implementations we can more closely
+    match the data structures to the underlying implementation. This
+    also opens the door for AES implementations that support block
+    cipher modes other than GCM (e.g. CTR and CBC).
+    
+    This commit changes BenchmarkExpandKey to test the go
+    implementation of key expansion. It might be better to have some
+    sort of 'initialisation' benchmark instead to cover the startup
+    costs of the assembly implementations (which might be doing
+    key expansion in a different way, or not at all).
+    
+    Change-Id: I094a7176b5bbe2177df73163a9c0b711a61c12d6
+    Reviewed-on: https://go-review.googlesource.com/22193
+    Run-TryBot: Michael Munday <munday@ca.ibm.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 03e216f30d8bad7f4f9dadb50f7f6ca71e632682
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Mon Apr 18 09:40:30 2016 -0700
+
+    cmd/compile: re-enable in-place append optimization
+    
+    CL 21891 was too clever in its attempts to avoid spills.
+    Storing newlen too early caused uses of append in the runtime
+    itself to receive an inconsistent view of a slice,
+    leading to corruption.
+    
+    This CL makes the generate code much more similar to
+    the old backend. It spills more than before,
+    but those spills have been contained to the grow path.
+    It recalculates newlen unnecessarily on the fast path,
+    but that's measurably cheaper than spilling it.
+    
+    CL 21891 caused runtime failures in 6 of 2000 runs
+    of net/http and crypto/x509 in my test setup.
+    This CL has gone 6000 runs without a failure.
+    
+    
+    Benchmarks going from master to this CL:
+    
+    name                         old time/op  new time/op  delta
+    AppendInPlace/NoGrow/Byte-8   439ns ± 2%   436ns ± 2%  -0.72%  (p=0.001 n=28+27)
+    AppendInPlace/NoGrow/1Ptr-8   901ns ± 0%   856ns ± 0%  -4.95%  (p=0.000 n=26+29)
+    AppendInPlace/NoGrow/2Ptr-8  2.15µs ± 1%  1.95µs ± 0%  -9.07%  (p=0.000 n=28+30)
+    AppendInPlace/NoGrow/3Ptr-8  2.66µs ± 0%  2.45µs ± 0%  -7.93%  (p=0.000 n=29+26)
+    AppendInPlace/NoGrow/4Ptr-8  3.24µs ± 1%  3.02µs ± 1%  -6.75%  (p=0.000 n=28+30)
+    AppendInPlace/Grow/Byte-8     269ns ± 1%   271ns ± 1%  +0.84%  (p=0.000 n=30+29)
+    AppendInPlace/Grow/1Ptr-8     275ns ± 1%   280ns ± 1%  +1.75%  (p=0.000 n=30+30)
+    AppendInPlace/Grow/2Ptr-8     384ns ± 0%   391ns ± 0%  +1.94%  (p=0.000 n=27+30)
+    AppendInPlace/Grow/3Ptr-8     455ns ± 0%   462ns ± 0%  +1.43%  (p=0.000 n=29+29)
+    AppendInPlace/Grow/4Ptr-8     478ns ± 0%   479ns ± 0%  +0.23%  (p=0.000 n=30+27)
+    
+    
+    However, for the large no-grow cases, there is still more work to be done.
+    Going from this CL to the non-SSA backend:
+    
+    name                         old time/op  new time/op  delta
+    AppendInPlace/NoGrow/Byte-8   436ns ± 2%   436ns ± 2%     ~     (p=0.967 n=27+29)
+    AppendInPlace/NoGrow/1Ptr-8   856ns ± 0%   884ns ± 0%   +3.28%  (p=0.000 n=29+26)
+    AppendInPlace/NoGrow/2Ptr-8  1.95µs ± 0%  1.56µs ± 0%  -20.28%  (p=0.000 n=30+29)
+    AppendInPlace/NoGrow/3Ptr-8  2.45µs ± 0%  1.89µs ± 0%  -22.88%  (p=0.000 n=26+28)
+    AppendInPlace/NoGrow/4Ptr-8  3.02µs ± 1%  2.56µs ± 1%  -15.35%  (p=0.000 n=30+28)
+    AppendInPlace/Grow/Byte-8     271ns ± 1%   283ns ± 1%   +4.56%  (p=0.000 n=29+29)
+    AppendInPlace/Grow/1Ptr-8     280ns ± 1%   288ns ± 1%   +2.99%  (p=0.000 n=30+30)
+    AppendInPlace/Grow/2Ptr-8     391ns ± 0%   409ns ± 0%   +4.66%  (p=0.000 n=30+29)
+    AppendInPlace/Grow/3Ptr-8     462ns ± 0%   481ns ± 0%   +4.13%  (p=0.000 n=29+30)
+    AppendInPlace/Grow/4Ptr-8     479ns ± 0%   502ns ± 0%   +4.81%  (p=0.000 n=27+26)
+    
+    
+    New generated code:
+    
+    var x []byte
+    
+    func a() {
+    	x = append(x, 1)
+    }
+    
+    
+    "".a t=1 size=208 args=0x0 locals=0x48
+    	0x0000 00000 (a.go:5)	TEXT	"".a(SB), $72-0
+    	0x0000 00000 (a.go:5)	MOVQ	(TLS), CX
+    	0x0009 00009 (a.go:5)	CMPQ	SP, 16(CX)
+    	0x000d 00013 (a.go:5)	JLS	190
+    	0x0013 00019 (a.go:5)	SUBQ	$72, SP
+    	0x0017 00023 (a.go:5)	FUNCDATA	$0, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+    	0x0017 00023 (a.go:5)	FUNCDATA	$1, gclocals·33cdeccccebe80329f1fdbee7f5874cb(SB)
+    	0x0017 00023 (a.go:6)	MOVQ	"".x+16(SB), CX
+    	0x001e 00030 (a.go:6)	MOVQ	"".x+8(SB), DX
+    	0x0025 00037 (a.go:6)	MOVQ	"".x(SB), BX
+    	0x002c 00044 (a.go:6)	LEAQ	1(DX), BP
+    	0x0030 00048 (a.go:6)	CMPQ	BP, CX
+    	0x0033 00051 (a.go:6)	JGT	$0, 73
+    	0x0035 00053 (a.go:6)	LEAQ	1(DX), AX
+    	0x0039 00057 (a.go:6)	MOVQ	AX, "".x+8(SB)
+    	0x0040 00064 (a.go:6)	MOVB	$1, (BX)(DX*1)
+    	0x0044 00068 (a.go:7)	ADDQ	$72, SP
+    	0x0048 00072 (a.go:7)	RET
+    	0x0049 00073 (a.go:6)	LEAQ	type.[]uint8(SB), AX
+    	0x0050 00080 (a.go:6)	MOVQ	AX, (SP)
+    	0x0054 00084 (a.go:6)	MOVQ	BX, 8(SP)
+    	0x0059 00089 (a.go:6)	MOVQ	DX, 16(SP)
+    	0x005e 00094 (a.go:6)	MOVQ	CX, 24(SP)
+    	0x0063 00099 (a.go:6)	MOVQ	BP, 32(SP)
+    	0x0068 00104 (a.go:6)	PCDATA	$0, $0
+    	0x0068 00104 (a.go:6)	CALL	runtime.growslice(SB)
+    	0x006d 00109 (a.go:6)	MOVQ	40(SP), CX
+    	0x0072 00114 (a.go:6)	MOVQ	48(SP), DX
+    	0x0077 00119 (a.go:6)	MOVQ	DX, "".autotmp_0+64(SP)
+    	0x007c 00124 (a.go:6)	MOVQ	56(SP), BX
+    	0x0081 00129 (a.go:6)	MOVQ	BX, "".x+16(SB)
+    	0x0088 00136 (a.go:6)	MOVL	runtime.writeBarrier(SB), AX
+    	0x008e 00142 (a.go:6)	TESTB	AL, AL
+    	0x0090 00144 (a.go:6)	JNE	$0, 162
+    	0x0092 00146 (a.go:6)	MOVQ	CX, "".x(SB)
+    	0x0099 00153 (a.go:6)	MOVQ	"".x(SB), BX
+    	0x00a0 00160 (a.go:6)	JMP	53
+    	0x00a2 00162 (a.go:6)	LEAQ	"".x(SB), BX
+    	0x00a9 00169 (a.go:6)	MOVQ	BX, (SP)
+    	0x00ad 00173 (a.go:6)	MOVQ	CX, 8(SP)
+    	0x00b2 00178 (a.go:6)	PCDATA	$0, $0
+    	0x00b2 00178 (a.go:6)	CALL	runtime.writebarrierptr(SB)
+    	0x00b7 00183 (a.go:6)	MOVQ	"".autotmp_0+64(SP), DX
+    	0x00bc 00188 (a.go:6)	JMP	153
+    	0x00be 00190 (a.go:6)	NOP
+    	0x00be 00190 (a.go:5)	CALL	runtime.morestack_noctxt(SB)
+    	0x00c3 00195 (a.go:5)	JMP	0
+    
+    
+    Fixes #14969 again
+    
+    Change-Id: Ia50463b1f506011aad0718a4fef1d4738e43c32d
+    Reviewed-on: https://go-review.googlesource.com/22197
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit b5ddbb90bf1b6aa3881a342bbf7986ba14df3348
+Author: Robert Griesemer <gri@golang.org>
+Date:   Fri Feb 26 15:52:13 2016 -0800
+
+    spec: refine rules about terminating statements
+    
+    Per a suggestion from mdempsky.
+    
+    Both gc and gccgo consider a statement list as terminating if the
+    last _non_empty_ statement is terminating; i.e., trailing semis are
+    ok. Only gotype followed the current stricter rule in the spec.
+    
+    This change adjusts the spec to match gc and gccgo behavior. In
+    support of this change, the spec has a matching rule for fallthrough,
+    which in valid positions may be followed by trailing semis as well.
+    
+    For details and examples, see the issue below.
+    
+    Fixes #14422.
+    
+    Change-Id: Ie17c282e216fc40ecb54623445c17be111e17ade
+    Reviewed-on: https://go-review.googlesource.com/19981
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+    Reviewed-by: Russ Cox <rsc@golang.org>
+
+commit a39950ba66998b7166a37ddf878d0a414a267ea5
+Author: Michael Munday <munday@ca.ibm.com>
+Date:   Fri Apr 15 15:20:24 2016 -0400
+
+    crypto/aes: delete TestEncryptBlock and TestDecryptBlock
+    
+    The encryptBlock and decryptBlock functions are already tested
+    (via the public API) by TestCipherEncrypt and TestCipherDecrypt
+    respectively. Both sets of tests check the output of the two
+    functions against the same set of FIPS 197 examples. I therefore
+    think it is safe to delete these two tests without losing any
+    coverage.
+    
+    Deleting these two tests will make it easier to modify the
+    internal API, which I am hoping to do in future CLs.
+    
+    Change-Id: I0dd568bc19f47b70ab09699b507833e527d39ba7
+    Reviewed-on: https://go-review.googlesource.com/22115
+    Reviewed-by: Adam Langley <agl@golang.org>
+    Run-TryBot: Adam Langley <agl@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 3e9264c9ae781a2cd28127deaed6ae26f84b4b15
+Author: Mikio Hara <mikioh.mikioh@gmail.com>
+Date:   Sun Feb 28 09:37:36 2016 +0900
+
+    net: add support for Zone of IPNet
+    
+    This change adds Zone field to IPNet structure for making it possible to
+    determine which network interface is associated with IPv6 link-local
+    address. Also makes ParseCIDR and IPNet.String capable handling literal
+    IPv6 address prefixes with zone identifier.
+    
+    Fixes #14518.
+    
+    Change-Id: I8f8a40d3b4f500ffef25728d4995651379d8408a
+    Reviewed-on: https://go-review.googlesource.com/19946
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 45bb8874314635fc40945da3f765a7844482bfef
+Author: Alex Brainman <alex.brainman@gmail.com>
+Date:   Tue Apr 19 14:31:41 2016 +1000
+
+    net: stop using GetHostByName and GetServByName
+    
+    Go 1.6 requires Windows XP or later. I have:
+    
+    C:\>systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+    OS Name:                   Microsoft Windows XP Professional
+    OS Version:                5.1.2600 Service Pack 3 Build 2600
+    
+    Running "go test" PASSes on my system after this CL is applied.
+    
+    Change-Id: Id59d169138c4a4183322c89ee7e766fb74d381fa
+    Reviewed-on: https://go-review.googlesource.com/22209
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit f947429983d3906127432120b49fa3362e7de374
+Author: David du Colombier <0intro@gmail.com>
+Date:   Tue Apr 19 03:24:21 2016 +0200
+
+    net: enable DualStack mode on Plan 9
+    
+    DualStack mode requires dialTCP to support cancellation,
+    which has been implemented for Plan 9 in CL 22144.
+    
+    Updates #11225.
+    Updates #11932.
+    
+    Change-Id: I6e468363dc147326b097b604c122d5af80362787
+    Reviewed-on: https://go-review.googlesource.com/22204
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 4331ab97802c39052f063d7597187563882353aa
+Author: David du Colombier <0intro@gmail.com>
+Date:   Tue Apr 19 03:19:12 2016 +0200
+
+    net: enable TestDialParallel, TestDialerFallbackDelay and TestDialCancel on Plan 9
+    
+    TestDialParallel, TestDialerFallbackDelay and TestDialCancel
+    require dialTCP to support cancellation, which has been
+    implemented for Plan 9 in CL 22144.
+    
+    Updates #11225.
+    Updates #11932.
+    
+    Change-Id: I3b30a645ef79227dfa519cde8d46c67b72f2485c
+    Reviewed-on: https://go-review.googlesource.com/22203
+    Run-TryBot: David du Colombier <0intro@gmail.com>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit a5386f3c7dc7735aa4695647896ba94bab0341e0
+Author: Robert Griesemer <gri@golang.org>
+Date:   Mon Apr 18 13:55:40 2016 -0700
+
+    cmd/compile: fix internal consistency check with binary exporter
+    
+    Per feedback from mdempsky from https://go-review.googlesource.com/22096.
+    
+    Also fix emitted position info.
+    
+    Change-Id: I7ff1967430867d922be8784832042c75d81df28b
+    Reviewed-on: https://go-review.googlesource.com/22198
+    Run-TryBot: Robert Griesemer <gri@golang.org>
+    Reviewed-by: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 262814467e7e574ac03114d23931042272fc714d
+Author: David du Colombier <0intro@gmail.com>
+Date:   Mon Apr 18 22:37:33 2016 +0200
+
+    net: handle hangup in read on Plan 9
+    
+    On Plan 9, when closing a TCP connection, we
+    write the "hangup" string to the TCP ctl file.
+    
+    The next read on the TCP data file will return
+    an error like "/net/tcp/18/data: Hangup", while
+    in Go, we expect to return io.EOF.
+    
+    This change makes Read to return io.EOF when
+    an error string containing "Hangup" is returned.
+    
+    Change-Id: I3f71ed543704190b441cac4787488a77f46d88a1
+    Reviewed-on: https://go-review.googlesource.com/22149
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: David du Colombier <0intro@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit f81ae3b22ca9cab78251b38fe52eacfea57e08f5
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Wed Apr 6 13:09:06 2016 -0400
+
+    cmd/link: shorter type symbol names
+    
+    Use (part of) a SHA-1 checksum to replace type symbol names.
+    
+    In typical programs this has no effect because types are not included
+    in the symbol table. But when dynamically linking, types are in the
+    table to make sure there is only one *rtype per Go type.
+    
+    Eventually we may be able to get rid of all pointers to rtype values in
+    the binary, but probably not by 1.7. And this has a nice effect on
+    binary size today:
+    
+    libstd.so:
+    	before 27.4MB
+    	after  26.2MB
+    
+    For #6853.
+    
+    Change-Id: I603d7f3e5baad84f59f2fd37eeb1e4ae5acfe44a
+    Reviewed-on: https://go-review.googlesource.com/21583
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 4d5adf1eb1a955bae08012e568c645eb4d7f3544
+Author: Keith Randall <khr@golang.org>
+Date:   Mon Apr 18 09:28:50 2016 -0700
+
+    cmd/compile: logical operation identities
+    
+    Some rewrites to simplify logical operations.
+    
+    Fixes #14363
+    
+    Change-Id: I45a1e8f227267cbcca0778101125f7bab776a5dd
+    Reviewed-on: https://go-review.googlesource.com/22188
+    Reviewed-by: Alexandru Moșoi <alexandru@mosoi.ro>
+    Run-TryBot: Alexandru Moșoi <alexandru@mosoi.ro>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 4140da7b57f944cc16324496adcc5a41d7a987ed
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Mon Apr 4 13:07:24 2016 -0400
+
+    cmd/link, cmd/compile: typelink sorting in linker
+    
+    Instead of writing out the type almost twice in the symbol name,
+    teach the linker how to sort typelink symbols by their contents.
+    
+    This ~halves the size of typelink symbol names, which helps very
+    large (6KB) names like those mentioned in #15104.
+    
+    This does not increase the total sorting work done by the linker,
+    and makes it possible to use shorter symbol names for types. See
+    the follow-on CL 21583.
+    
+    Change-Id: Ie5807565ed07d31bc477d20f60e4c0b47144f337
+    Reviewed-on: https://go-review.googlesource.com/21457
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 2e2df78ae9c2c5e96cce99bccebd5a22f30d6a1a
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Mon Apr 18 04:50:19 2016 -0400
+
+    reflect: test that method name offset is valid
+    
+    Bug fix went in CL 21396, this is a matching test.
+    
+    Fixes #15343
+    
+    Change-Id: I3670145c7cac45cb4fb3121ffc039cfb7fa7c87a
+    Reviewed-on: https://go-review.googlesource.com/22171
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 411a0adc9bbee3a981af93de5f83b13f26f0413f
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Sun Apr 17 19:53:39 2016 -0700
+
+    runtime: add benchmarks for in-place append
+    
+    Change-Id: I2b43cc976d2efbf8b41170be536fdd10364b65e5
+    Reviewed-on: https://go-review.googlesource.com/22190
+    Reviewed-by: Keith Randall <khr@golang.org>
+
+commit b024ed0d944c0f839e699fb10af633d295abb311
+Author: Keith Randall <khr@golang.org>
+Date:   Mon Apr 18 11:17:55 2016 -0700
+
+    cmd/compile: eliminate copy for static literals
+    
+    *p = [5]byte{1,2,3,4,5}
+    
+    First we allocate a global containing the RHS.  Then we copy
+    that global to a local stack variable, and then copy that local
+    stack variable to *p.  The intermediate copy is unnecessary.
+    
+    Note that this only works if the RHS is completely constant.
+    If the code was:
+    *p = [5]byte{1,2,x,4,5}
+    this optimization doesn't apply as we have to construct the
+    RHS on the stack before copying it to *p.
+    
+    Fixes #12841
+    
+    Change-Id: I7cd0404ecc7a2d1750cbd8fe1222dba0fa44611f
+    Reviewed-on: https://go-review.googlesource.com/22192
+    Reviewed-by: Josh Bleecher Snyder <josharian@gmail.com>
+
+commit f60fcca5f1e7b7a33e219ec45d4bd9dc58dd2552
+Author: Brad Fitzpatrick <bradfitz@golang.org>
+Date:   Sat Apr 16 14:17:40 2016 -0700
+
+    net: fix plan9 after context change, propagate contexts more
+    
+    My previous https://golang.org/cl/22101 to add context throughout the
+    net package broke Plan 9, which isn't currently tested (#15251).
+    
+    It also broke some old unsupported version of Windows (Windows 2000?)
+    which doesn't have the ConnectEx function, but that was only found
+    visually, since our minimum supported Windows version has ConnectEx.
+    This change simplifies the Windows and deletes the non-ConnectEx code
+    path.  Windows 2000 will work even less now, if it even worked
+    before. Windows XP remains our minimum supported version.
+    
+    Specifically, the previous CL stopped using the "dial" function, which
+    0intro noted:
+    https://github.com/golang/go/issues/15333#issuecomment-210842761
+    
+    This CL removes the dial function instead and makes plan9's net
+    implementation respect contexts, which likely fixes a number of
+    t.Skipped tests. I'm leaving that to 0intro to investigate.
+    
+    In the process of propagating and respecting contexts for plan9, I had
+    to change some signatures to add contexts to more places and ended up
+    pushing contexts down into the Go-based DNS resolution as well,
+    replacing the pure-Go DNS implementation's use of "timeout
+    time.Duration" with a context instead.
+    
+    Updates #11932
+    Updates #15328
+    
+    Fixes #15333
+    
+    Change-Id: I6ad1e62f38271cdd86b3f40921f2d0f23374936a
+    Reviewed-on: https://go-review.googlesource.com/22144
+    Reviewed-by: David du Colombier <0intro@gmail.com>
+    Reviewed-by: Mikio Hara <mikioh.mikioh@gmail.com>
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit a3c92c9db137413b17447a72c334c3e560bace06
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Mon Apr 18 07:24:48 2016 -0400
+
+    cmd/link: use gold when dynamic linking on arm64
+    
+    The GNU linker follows the letter of -znocopyreloc by refusing to
+    generate COPY relocations on arm64. Unfortunately it generates an
+    error instead of finding another way. The gold linker works, so
+    switch to it.
+    
+    Fixes linux/arm64 build.
+    
+    Change-Id: I1f7119d999c8f9f1f2d0c1e06b6462cea9c02a71
+    Reviewed-on: https://go-review.googlesource.com/22185
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 0db2bf2313cdd7711c2215fab2ae234a0f591fe8
+Author: Brad Fitzpatrick <bradfitz@golang.org>
+Date:   Fri Apr 15 21:56:30 2016 +0000
+
+    net/http: document Hijacker and Flusher more
+    
+    Fixes #15312
+    
+    Change-Id: I4fabef3f21081bc4b020069851b5c2504bc6b4d8
+    Reviewed-on: https://go-review.googlesource.com/22122
+    Reviewed-by: Emmanuel Odeke <emm.odeke@gmail.com>
+    Reviewed-by: Andrew Gerrand <adg@golang.org>
+
+commit f5423a63dfa5d010e7796271666f592a5f9dad70
+Author: Ian Lance Taylor <iant@golang.org>
+Date:   Sun Apr 17 15:33:07 2016 -0700
+
+    cmd/compile: a dot expression can not be a struct literal key
+    
+    Passes toolstash -cmp.
+    
+    Fixes #15311.
+    
+    Change-Id: I1d67f5c9de38e899ab2d6c8986fabd6f197df23a
+    Reviewed-on: https://go-review.googlesource.com/22162
+    Reviewed-by: David Crawshaw <crawshaw@golang.org>
+
+commit 95df0c6ab93f6a42bdc9fd45500fd4d56bfc9add
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Mon Mar 28 21:51:10 2016 -0400
+
+    cmd/compile, etc: use name offset in method tables
+    
+    Introduce and start using nameOff for two encoded names. This pair
+    of changes is best done together because the linker's method decoder
+    expects the method layouts to match.
+    
+    Precursor to converting all existing name and *string fields to
+    nameOff.
+    
+    linux/amd64:
+    	cmd/go:  -45KB (0.5%)
+    	jujud:  -389KB (0.6%)
+    
+    linux/amd64 PIE:
+    	cmd/go: -170KB (1.4%)
+    	jujud:  -1.5MB (1.8%)
+    
+    For #6853.
+    
+    Change-Id: Ia044423f010fb987ce070b94c46a16fc78666ff6
+    Reviewed-on: https://go-review.googlesource.com/21396
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 3c8d6af8e02bbf230c2bef9f181d8ea393068299
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Sat Apr 16 11:08:41 2016 -0400
+
+    cmd/link: use -znocopyreloc when dynamic linking
+    
+    On ARM, use the gold linker to avoid copy relocations.
+    https://sourceware.org/bugzilla/show_bug.cgi?id=19962
+    
+    Change-Id: Icf82a38d39495d4518812713b957a03a6652c728
+    Reviewed-on: https://go-review.googlesource.com/22141
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 135572eb326dfc445e1faf74fdffaf82d041c22d
+Author: Andrew Gerrand <adg@golang.org>
+Date:   Mon Apr 18 13:31:50 2016 +1000
+
+    cmd/go: mention that _test.go files are ignored when building
+    
+    Fixes #15315
+    
+    Change-Id: I8fea31507a5f83df8a86fb067f1b11d90133dc09
+    Reviewed-on: https://go-review.googlesource.com/22180
+    Reviewed-by: Chris Broadfoot <cbro@golang.org>
+
+commit 6ec481b06c1ceba5792e355ca45f7476bb78f21f
+Author: Klaus Post <klauspost@gmail.com>
+Date:   Sun Apr 10 12:00:13 2016 +0200
+
+    compress/flate: use uncompressed if dynamic encoding is larger
+    
+    This adds size calculation to "dynamic" writes.
+    This ensures that if dynamic Huffman encoding is bigger,
+    or only slightly smaller than raw data, the block is written
+    uncompressed.
+    
+    To minimize the code duplication of this function, the
+    size calculation has been moved to separate functions.
+    
+    Since I was modifying these calculations, I changed "int64"
+    size calculations to "int". Blocks are of very limited size,
+    so there is not any risk of overflows.
+    This should mainly improve 32 bit performance, but amd64 also
+    gets a slight boost:
+    
+    name                       old time/op    new time/op    delta
+    EncodeDigitsHuffman1e4-8     49.9µs ± 1%    49.3µs ± 1%  -1.21%  (p=0.000 n=10+10)
+    EncodeDigitsHuffman1e5-8      476µs ± 1%     471µs ± 3%    ~     (p=0.218 n=10+10)
+    EncodeDigitsHuffman1e6-8     4.80ms ± 2%    4.75ms ± 2%    ~      (p=0.243 n=10+9)
+    EncodeDigitsSpeed1e4-8        305µs ± 3%     300µs ± 1%  -1.86%  (p=0.005 n=10+10)
+    EncodeDigitsSpeed1e5-8       3.67ms ± 2%    3.58ms ± 1%  -2.29%    (p=0.000 n=9+8)
+    EncodeDigitsSpeed1e6-8       38.3ms ± 2%    37.0ms ± 1%  -3.45%    (p=0.000 n=9+9)
+    EncodeDigitsDefault1e4-8      361µs ± 2%     353µs ± 1%  -2.21%  (p=0.000 n=10+10)
+    EncodeDigitsDefault1e5-8     5.24ms ± 2%    5.19ms ± 2%    ~     (p=0.105 n=10+10)
+    EncodeDigitsDefault1e6-8     56.5ms ± 3%    55.1ms ± 1%  -2.42%  (p=0.001 n=10+10)
+    EncodeDigitsCompress1e4-8     362µs ± 2%     358µs ± 2%    ~     (p=0.123 n=10+10)
+    EncodeDigitsCompress1e5-8    5.26ms ± 3%    5.20ms ± 1%    ~     (p=0.089 n=10+10)
+    EncodeDigitsCompress1e6-8    56.0ms ± 4%    55.0ms ± 1%    ~      (p=0.065 n=10+9)
+    EncodeTwainHuffman1e4-8      70.9µs ± 3%    67.6µs ± 2%  -4.59%  (p=0.000 n=10+10)
+    EncodeTwainHuffman1e5-8       556µs ± 2%     533µs ± 1%  -4.20%  (p=0.000 n=10+10)
+    EncodeTwainHuffman1e6-8      5.54ms ± 3%    5.29ms ± 1%  -4.37%   (p=0.000 n=10+9)
+    EncodeTwainSpeed1e4-8         294µs ± 3%     293µs ± 1%    ~      (p=0.965 n=10+8)
+    EncodeTwainSpeed1e5-8        2.59ms ± 2%    2.56ms ± 1%    ~     (p=0.353 n=10+10)
+    EncodeTwainSpeed1e6-8        25.6ms ± 1%    24.9ms ± 1%  -2.62%   (p=0.000 n=9+10)
+    EncodeTwainDefault1e4-8       419µs ± 2%     417µs ± 1%    ~      (p=0.780 n=10+9)
+    EncodeTwainDefault1e5-8      6.23ms ± 4%    6.16ms ± 1%    ~     (p=0.218 n=10+10)
+    EncodeTwainDefault1e6-8      66.2ms ± 2%    65.7ms ± 1%    ~     (p=0.529 n=10+10)
+    EncodeTwainCompress1e4-8      426µs ± 1%     428µs ± 2%    ~      (p=0.549 n=9+10)
+    EncodeTwainCompress1e5-8     6.80ms ± 1%    6.85ms ± 3%    ~      (p=0.156 n=9+10)
+    EncodeTwainCompress1e6-8     74.6ms ± 3%    73.8ms ± 2%    ~     (p=0.280 n=10+10)
+    
+    name                       old speed      new speed      delta
+    EncodeDigitsHuffman1e4-8    200MB/s ± 1%   203MB/s ± 1%  +1.23%  (p=0.000 n=10+10)
+    EncodeDigitsHuffman1e5-8    210MB/s ± 1%   212MB/s ± 3%    ~      (p=0.356 n=10+9)
+    EncodeDigitsHuffman1e6-8    208MB/s ± 2%   210MB/s ± 2%    ~      (p=0.243 n=10+9)
+    EncodeDigitsSpeed1e4-8     32.8MB/s ± 3%  33.4MB/s ± 1%  +1.88%  (p=0.005 n=10+10)
+    EncodeDigitsSpeed1e5-8     27.2MB/s ± 2%  27.9MB/s ± 1%  +2.60%   (p=0.000 n=10+8)
+    EncodeDigitsSpeed1e6-8     26.1MB/s ± 2%  27.0MB/s ± 1%  +3.56%    (p=0.000 n=9+9)
+    EncodeDigitsDefault1e4-8   27.7MB/s ± 2%  28.4MB/s ± 1%  +2.24%  (p=0.000 n=10+10)
+    EncodeDigitsDefault1e5-8   19.1MB/s ± 2%  19.3MB/s ± 2%    ~     (p=0.101 n=10+10)
+    EncodeDigitsDefault1e6-8   17.7MB/s ± 3%  18.1MB/s ± 1%  +2.46%  (p=0.001 n=10+10)
+    EncodeDigitsCompress1e4-8  27.6MB/s ± 2%  27.9MB/s ± 2%    ~     (p=0.119 n=10+10)
+    EncodeDigitsCompress1e5-8  19.0MB/s ± 3%  19.2MB/s ± 1%    ~     (p=0.085 n=10+10)
+    EncodeDigitsCompress1e6-8  17.9MB/s ± 4%  18.1MB/s ± 3%    ~     (p=0.110 n=10+10)
+    EncodeTwainHuffman1e4-8     141MB/s ± 3%   148MB/s ± 2%  +4.79%  (p=0.000 n=10+10)
+    EncodeTwainHuffman1e5-8     180MB/s ± 2%   188MB/s ± 1%  +4.38%  (p=0.000 n=10+10)
+    EncodeTwainHuffman1e6-8     181MB/s ± 3%   189MB/s ± 1%  +4.54%   (p=0.000 n=10+9)
+    EncodeTwainSpeed1e4-8      34.0MB/s ± 3%  34.1MB/s ± 1%    ~      (p=0.948 n=10+8)
+    EncodeTwainSpeed1e5-8      38.7MB/s ± 2%  39.0MB/s ± 1%    ~     (p=0.353 n=10+10)
+    EncodeTwainSpeed1e6-8      39.1MB/s ± 1%  40.1MB/s ± 1%  +2.68%   (p=0.000 n=9+10)
+    EncodeTwainDefault1e4-8    23.9MB/s ± 2%  24.0MB/s ± 1%    ~      (p=0.734 n=10+9)
+    EncodeTwainDefault1e5-8    16.0MB/s ± 4%  16.2MB/s ± 1%    ~     (p=0.210 n=10+10)
+    EncodeTwainDefault1e6-8    15.1MB/s ± 2%  15.2MB/s ± 1%    ~     (p=0.515 n=10+10)
+    EncodeTwainCompress1e4-8   23.5MB/s ± 1%  23.4MB/s ± 2%    ~      (p=0.536 n=9+10)
+    EncodeTwainCompress1e5-8   14.7MB/s ± 1%  14.6MB/s ± 3%    ~      (p=0.138 n=9+10)
+    EncodeTwainCompress1e6-8   13.4MB/s ± 3%  13.5MB/s ± 2%    ~     (p=0.239 n=10+10)
+    
+    This improves "random input" to the dynamic writer, which is why the test data is
+    updated. The output size goes from 1051 to 1005 bytes.
+    
+    Change-Id: I3ee11d2d2511b277d2dd16734aeea07c98bca450
+    Reviewed-on: https://go-review.googlesource.com/21757
+    Reviewed-by: Joe Tsai <joetsai@digital-static.net>
+    Run-TryBot: Joe Tsai <joetsai@digital-static.net>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Nigel Tao <nigeltao@golang.org>
+
+commit 3629814c4399010a47f146516511ecfef64f05c3
+Author: David Symonds <dsymonds@golang.org>
+Date:   Mon Apr 18 09:20:58 2016 +1000
+
+    doc: link to iant's generics proposal from the FAQ.
+    
+    Updates #15292.
+    
+    Change-Id: I229f66c2a41ae0738225f2ba7a574478f5d6d620
+    Reviewed-on: https://go-review.googlesource.com/22163
+    Reviewed-by: Andrew Gerrand <adg@golang.org>
+
+commit 04535459caf349bc5a731133f5e9eef5e1ab9af9
+Author: Ian Lance Taylor <iant@golang.org>
+Date:   Sun Apr 17 15:13:46 2016 -0700
+
+    .gitignore: don't ignore y.output
+    
+    We no longer use yacc, and we shouldn't have any y.output files.
+    
+    Change-Id: I045671b6aef3f53c3cfe068b0c14a4871689c13e
+    Reviewed-on: https://go-review.googlesource.com/22161
+    Run-TryBot: Ian Lance Taylor <iant@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 5c434e93a16fae3edc4f0494bc796eb80bfbd0b2
+Author: Emmanuel Odeke <emm.odeke@gmail.com>
+Date:   Sun Apr 17 11:24:57 2016 -0700
+
+    fmt: remove extra space in doc for compound objects
+    
+    Fixes #15339
+    
+    Change-Id: I0b006deefb58ccfc47beae4e1b8da3d77fafda6b
+    Reviewed-on: https://go-review.googlesource.com/22148
+    Reviewed-by: Rob Pike <r@golang.org>
+
+commit a85a224e8e835fc9544f5e9e7b28d7bbc732045b
+Author: Martin Möhrmann <martisch@uos.de>
+Date:   Sat Apr 16 09:24:43 2016 +0200
+
+    fmt: fix padding when precision is set for integer formatting
+    
+    Ignore the f.zero flag and use spaces for padding instead
+    when precision is set.
+    
+    Fixes #15331
+    
+    Change-Id: I3ac485df24b7bdf4fddf69e3cc17c213c737b5ff
+    Reviewed-on: https://go-review.googlesource.com/22131
+    Run-TryBot: Rob Pike <r@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Rob Pike <r@golang.org>
+
+commit d07709ed7b798a1eca3394202a241e6f36fe9695
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Sat Apr 16 21:42:07 2016 -0700
+
+    crypto/x509: gofmt
+    
+    Change-Id: I05659a836612f958083fea9a27805eb9f0ac0836
+    Reviewed-on: https://go-review.googlesource.com/22145
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 31da093c1e8b82bcba42846a4a8f670452df88f3
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Sat Apr 16 18:36:07 2016 -0700
+
+    image/draw: remove some bounds checks from DrawYCbCr
+    
+    It’d be nicer to write just
+    
+    _ = dpix[x+3]
+    
+    but the compiler isn’t able to reason about offsets
+    from symbols (yet).
+    
+    image/draw benchmark:
+    
+    YCbCr-8   722µs ± 3%   682µs ± 3%  -5.54%  (p=0.000 n=50+50)
+    
+    Change-Id: Ia1e399496ed87c282bf0f9ca56c0b2d4948a0df9
+    Reviewed-on: https://go-review.googlesource.com/22146
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 2563b6f9fe76da6c9f95c7766986f4684b80ae6d
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Sun Apr 3 14:44:29 2016 -0700
+
+    cmd/compile/internal/ssa: use Compare instead of Equal
+    
+    They have different semantics.
+    
+    Equal is stricter and is designed for the front-end.
+    Compare is looser and cheaper and is designed for the back-end.
+    To avoid possible regression, remove Equal from ssa.Type.
+    
+    Updates #15043
+    
+    Change-Id: Ie23ce75ff6b4d01b7982e0a89e6f81b5d099d8d6
+    Reviewed-on: https://go-review.googlesource.com/21483
+    Reviewed-by: David Chase <drchase@google.com>
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+
+commit 462aa7ec7b854f5a1bb4f633cb439eb67bced625
+Author: Brad Fitzpatrick <bradfitz@golang.org>
+Date:   Wed Apr 13 18:14:52 2016 +0000
+
+    encoding/json: update docs to not use misuse the term "object"
+    
+    In JSON terminology, "object" is a collect of key/value pairs. But a
+    JSON object is only one type of JSON value (others are string, number,
+    array, true, false, null).
+    
+    This updates the Go docs (at least the public godoc) to not use
+    "object" when we mean any JSON value.
+    
+    Change-Id: Ieb1c456c703693714d63d9d09d306f4d9e8f4597
+    Reviewed-on: https://go-review.googlesource.com/22003
+    Reviewed-by: Andrew Gerrand <adg@golang.org>
+
+commit 2cdcb6f8296b6528bb7d256a45e339c4aefb9109
+Author: Austin Clements <austin@google.com>
+Date:   Thu Apr 14 13:41:36 2016 -0400
+
+    runtime: scavenge memory on physical page-aligned boundaries
+    
+    Currently the scavenger marks memory unused in multiples of the
+    allocator page size (8K). This is safe as long as the true physical
+    page size is 4K (or 8K), as it is on many platforms. However, on
+    ARM64, PPC64x, and MIPS64, the physical page size is larger than 8K,
+    so if we attempt to mark memory unused, the kernel will round the
+    boundaries of the region *out* to all pages covered by the requested
+    region, and we'll release a larger region of memory than intended. As
+    a result, the scavenger is currently disabled on these platforms.
+    
+    Fix this by first rounding the region to be marked unused *in* to
+    multiples of the physical page size, so that when we ask the kernel to
+    mark it unused, it releases exactly the requested region.
+    
+    Fixes #9993.
+    
+    Change-Id: I96d5fdc2f77f9d69abadcea29bcfe55e68288cb1
+    Reviewed-on: https://go-review.googlesource.com/22066
+    Reviewed-by: Rick Hudson <rlh@golang.org>
+
+commit 1151473077fb03df798d4eb57a22fa820f9e41f8
+Author: Austin Clements <austin@google.com>
+Date:   Thu Apr 14 13:40:35 2016 -0400
+
+    runtime: check that sysUnused is always physical-page aligned
+    
+    If sysUnused is passed an address or length that is not aligned to the
+    physical page boundary, the kernel will unmap more memory than the
+    caller wanted. Add a check for this.
+    
+    For #9993.
+    
+    Change-Id: I68ff03032e7b65cf0a853fe706ce21dc7f2aaaf8
+    Reviewed-on: https://go-review.googlesource.com/22065
+    Reviewed-by: Rick Hudson <rlh@golang.org>
+    Reviewed-by: Dave Cheney <dave@cheney.net>
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+
+commit 8ce844e88ed8c16bef7febea05b003b50bd0609e
+Author: Austin Clements <austin@google.com>
+Date:   Thu Apr 14 13:27:36 2016 -0400
+
+    runtime: check kernel physical page size during init
+    
+    The runtime hard-codes an assumed physical page size. If this is
+    smaller than the kernel's page size or not a multiple of it, sysUnused
+    may incorrectly release more memory to the system than intended.
+    
+    Add a runtime startup check that the runtime's assumed physical page
+    is compatible with the kernel's physical page size.
+    
+    For #9993.
+    
+    Change-Id: Ida9d07f93c00ca9a95dd55fc59bf0d8a607f6728
+    Reviewed-on: https://go-review.googlesource.com/22064
+    Reviewed-by: Rick Hudson <rlh@golang.org>
+
+commit d6b177d1eb7849375e246b97c58406aed7350c86
+Author: Austin Clements <austin@google.com>
+Date:   Thu Apr 14 15:08:24 2016 -0400
+
+    runtime: remove empty 386 archauxv
+    
+    archauxv no longer does anything on 386, so remove it.
+    
+    Change-Id: I94545238e40fa6a6832a7c3b40aedfc6c1f6a97b
+    Reviewed-on: https://go-review.googlesource.com/22063
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 90addd3d41852192ba697d33c9b1660988b82ed7
+Author: Austin Clements <austin@google.com>
+Date:   Thu Apr 14 12:32:28 2016 -0400
+
+    runtime: common handling of _AT_RANDOM auxv
+    
+    The Linux kernel provides 16 bytes of random data via the auxv vector
+    at startup. Currently we consume this separately on 386, amd64, arm,
+    and arm64. Now that we have a common auxv parser, handle _AT_RANDOM in
+    the common path.
+    
+    Change-Id: Ib69549a1d37e2d07a351cf0f44007bcd24f0d20d
+    Reviewed-on: https://go-review.googlesource.com/22062
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit c955bb2040e601c474e547b8badbe44677c9fbdf
+Author: Austin Clements <austin@google.com>
+Date:   Thu Apr 14 12:12:45 2016 -0400
+
+    runtime: common auxv parser
+    
+    Currently several different Linux architectures have separate copies
+    of the auxv parser. Bring these all together into a single copy of the
+    parser that calls out to a per-arch handler for each tag/value pair.
+    This is in preparation for handling common auxv tags in one place.
+    
+    For #9993.
+    
+    Change-Id: Iceebc3afad6b4133b70fca7003561ae370445c10
+    Reviewed-on: https://go-review.googlesource.com/22061
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+
+commit 26ecb42fb4c5ee1d8b64f12e5bb8df6549523d23
+Author: Emmanuel Odeke <emm.odeke@gmail.com>
+Date:   Sat Apr 16 02:04:00 2016 -0700
+
+    net/http: normalize empty port in URL.Host's ":port"
+    
+    - Ensures that the empty port and preceeding ":"
+    in a URL.Host are stripped.
+    Normalize the empty port in a URL.Host's ":port" as
+    mandated by RFC 3986 Section 6.2.3 which states that:
+    `Likewise an explicit ":port", for which the port is empty or
+    the default for the scheme, is equivalent to one where the port
+    and its ":" delimiter are elided and thus should be
+    removed by scheme-based normalization.`
+    
+    - Moves function `hasPort` from client.go (where it was defined but
+    not used directly), to http.go the common area.
+    
+    Fixes #14836
+    
+    Change-Id: I2067410377be9c71106b1717abddc2f8b1da1c03
+    Reviewed-on: https://go-review.googlesource.com/22140
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 585590549a3c6e26e7963081e11478a1913744a6
+Author: Brad Fitzpatrick <bradfitz@golang.org>
+Date:   Fri Apr 15 22:59:36 2016 +0000
+
+    net/http: add Transport.Dialer, plumb RoundTrip contexts to net package
+    
+    This simply connects the contexts, pushing them down the call stack.
+    Future CLs will utilize them.
+    
+    For #12580 (http.Transport tracing/analytics)
+    Updates #13021
+    
+    Change-Id: I5b2074d6eb1e87d79a767fc0609c84e7928d1a16
+    Reviewed-on: https://go-review.googlesource.com/22124
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 318da8d66958574497450e4dcee518df55194f14
+Author: David du Colombier <0intro@gmail.com>
+Date:   Sat Apr 16 04:36:42 2016 +0200
+
+    net: ignore lack of deadline support on Plan 9
+    
+    Since CL 22101, network tests are failing on Plan 9
+    due to the lack of deadline support.
+    
+    Instead of panicking, we just ignore the deadline
+    when set.
+    
+    Update #11932.
+    Fixes #15328.
+    
+    Change-Id: I1399303b0b3d6d81e0b8b8d327980d978b411a46
+    Reviewed-on: https://go-review.googlesource.com/22127
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 002c69e05d6a24693ac1052d98845ec635f34c19
+Author: Morten Siebuhr <sbhr@sbhr.dk>
+Date:   Fri Feb 19 21:53:17 2016 +0100
+
+    net: fix looking up port numbers starting with numbers.
+    
+    LookupPort() correctly parses service names beginning with numerals by
+    implementing a new parser, mainly taken from strconv/atoi.go.
+    
+    Also testes some previously undefined behaviours around port numbers
+    larger than 65535 that previously could lead to some tests fail with
+    EOPNOTSUPP (Operation Not Supported).
+    
+    Fixes #14322
+    
+    Change-Id: I1b90dbed434494723e261d84e73fe705e5c0507a
+    Reviewed-on: https://go-review.googlesource.com/19720
+    Run-TryBot: Mikio Hara <mikioh.mikioh@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Mikio Hara <mikioh.mikioh@gmail.com>
+
+commit b6b4004d5a5bf7099ac9ab76777797236da7fe63
+Author: Brad Fitzpatrick <bradfitz@golang.org>
+Date:   Thu Apr 14 17:47:25 2016 -0700
+
+    net: context plumbing, add Dialer.DialContext
+    
+    For #12580 (http.Transport tracing/analytics)
+    Updates #13021
+    
+    Change-Id: I126e494a7bd872e42c388ecb58499ecbf0f014cc
+    Reviewed-on: https://go-review.googlesource.com/22101
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+    Reviewed-by: Mikio Hara <mikioh.mikioh@gmail.com>
+
+commit 1d0977a1d552ad19a88c4ba9aeecd403699d82b6
+Author: Ian Lance Taylor <iant@golang.org>
+Date:   Thu Apr 14 16:51:18 2016 -0700
+
+    cmd/cgo: add missing formatting directive in error message
+    
+    Fixes #15310.
+    
+    Change-Id: I588b3c630a20a6878f7cd00f9af29b1dd8a4abf6
+    Reviewed-on: https://go-review.googlesource.com/22100
+    Run-TryBot: Ian Lance Taylor <iant@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit d57a118afabdd5b0f516d8d3225b2c7f8c96d64a
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Fri Apr 15 14:22:27 2016 -0700
+
+    cmd/compile: remove dead flags
+    
+    For some time now, the -d flag has been used to control various named
+    debug options, rather than setting Debug['d']. Consequently, that
+    means dflag() always returns false, which means the -y flag is also
+    useless.
+    
+    Similarly, Debug['L'] is never used anywhere, so the -L flag can be
+    dropped too.
+    
+    Change-Id: I4bb12454e462410115ec4f5565facf76c5c2f255
+    Reviewed-on: https://go-review.googlesource.com/22121
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 75c079cb976e2ba2106074ca0b3005b788c18f08
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Fri Apr 15 13:39:47 2016 -0700
+
+    archive/tar: style nit: s/nano_buf/nanoBuf/
+    
+    Pointed out during review of golang.org/cl/22104.
+    
+    Change-Id: If8842e7f8146441e918ec6a2b6e893b7cf88615c
+    Reviewed-on: https://go-review.googlesource.com/22120
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 6f59ccb052534f3293e9e0b0e02f35578901ef3c
+Author: Mikio Hara <mikioh.mikioh@gmail.com>
+Date:   Fri Jan 15 14:57:41 2016 +0900
+
+    runtime: don't always unblock all signals on dragonfly, freebsd and openbsd
+    
+    https://golang.org/cl/10173 intrduced msigsave, ensureSigM and
+    _SigUnblock but didn't enable the new signal save/restore mechanism for
+    SIG{HUP,INT,QUIT,ABRT,TERM} on DragonFly BSD, FreeBSD and OpenBSD.
+    
+    At present, it looks like they have the implementation. This change
+    enables the new mechanism on DragonFly BSD, FreeBSD and OpenBSD the same
+    as Darwin, NetBSD.
+    
+    Change-Id: Ifb4b4743b3b4f50bfcdc7cf1fe1b59c377fa2a41
+    Reviewed-on: https://go-review.googlesource.com/18657
+    Run-TryBot: Mikio Hara <mikioh.mikioh@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 7345fa54c17e979c4dc9d5c26c385d77ad614592
+Author: Martin Möhrmann <martisch@uos.de>
+Date:   Mon Mar 21 14:36:21 2016 +0100
+
+    fmt: optimize struct layout and intbuf size
+    
+    Move boolean fields to the end of the pp struct for better packing.
+    
+    Increase the fmt.intbuf size to leave no padding space unused
+    at the end of the fmt struct on 32 bit architectures.
+    
+    The size of the pp struct on amd64 is decreased from 192 byte
+    to 184 byte and on 386 from 132 byte to 128 byte.
+    
+    Simplify buffer size calculation in fmt_integer.
+    
+    Consolidate test cases for intbuf overflow checks.
+    
+    amd64 Haswell:
+    
+    name                     old time/op  new time/op  delta
+    SprintfPadding-2          227ns ± 2%   227ns ± 1%    ~     (p=0.941 n=25+25)
+    SprintfEmpty-2           38.4ns ± 6%  35.8ns ±23%  -6.71%  (p=0.030 n=24+25)
+    SprintfString-2           100ns ± 0%   101ns ± 0%  +1.00%  (p=0.000 n=19+18)
+    SprintfTruncateString-2   142ns ± 1%   142ns ± 1%  +0.37%  (p=0.028 n=25+25)
+    SprintfQuoteString-2      397ns ± 0%   393ns ± 0%  -0.82%  (p=0.000 n=21+24)
+    SprintfInt-2              101ns ± 2%   102ns ± 4%    ~     (p=0.159 n=21+24)
+    SprintfIntInt-2           155ns ± 3%   155ns ± 3%    ~     (p=0.934 n=25+25)
+    SprintfPrefixedInt-2      252ns ± 2%   251ns ± 2%    ~     (p=0.198 n=25+25)
+    SprintfFloat-2            184ns ± 3%   179ns ± 2%  -3.07%  (p=0.000 n=24+25)
+    SprintfComplex-2          532ns ± 2%   535ns ± 2%  +0.64%  (p=0.046 n=25+24)
+    SprintfBoolean-2         90.5ns ± 3%  91.6ns ± 2%  +1.17%  (p=0.000 n=22+22)
+    SprintfHexString-2        164ns ± 2%   165ns ± 3%    ~     (p=0.066 n=25+25)
+    SprintfHexBytes-2         171ns ± 3%   170ns ± 3%    ~     (p=0.941 n=25+24)
+    SprintfBytes-2            320ns ± 1%   313ns ± 1%  -2.31%  (p=0.000 n=24+21)
+    SprintfStringer-2         347ns ± 2%   348ns ± 2%    ~     (p=0.426 n=24+24)
+    SprintfStructure-2        753ns ± 1%   742ns ± 1%  -1.49%  (p=0.000 n=24+25)
+    FprintInt-2               145ns ± 0%   144ns ± 0%  -0.69%  (p=0.000 n=24+23)
+    FprintfBytes-2            163ns ± 0%   163ns ± 0%  -0.27%  (p=0.000 n=25+25)
+    FprintIntNoAlloc-2        108ns ± 0%   105ns ± 0%  -2.78%  (p=0.000 n=25+2
+    
+    386 Haswell:
+    
+    name                     old time/op  new time/op  delta
+    SprintfPadding-2          426ns ± 2%   422ns ± 1%  -0.89%  (p=0.000 n=25+24)
+    SprintfEmpty-2           24.6ns ± 1%  24.5ns ± 0%  -0.39%  (p=0.000 n=22+15)
+    SprintfString-2          99.1ns ± 3%  95.6ns ± 0%  -3.52%  (p=0.000 n=25+24)
+    SprintfTruncateString-2   156ns ± 4%   153ns ± 1%  -1.65%  (p=0.000 n=24+23)
+    SprintfQuoteString-2      500ns ± 2%   493ns ± 1%  -1.49%  (p=0.000 n=25+24)
+    SprintfInt-2             92.6ns ± 9%  88.3ns ± 1%  -4.72%  (p=0.000 n=25+25)
+    SprintfIntInt-2           143ns ± 7%   137ns ± 2%  -4.01%  (p=0.000 n=23+25)
+    SprintfPrefixedInt-2      268ns ±19%   264ns ±16%    ~     (p=0.826 n=24+24)
+    SprintfFloat-2            242ns ± 4%   246ns ± 2%  +1.60%  (p=0.000 n=25+25)
+    SprintfComplex-2         1.04µs ± 3%  1.03µs ± 1%  -0.89%  (p=0.026 n=25+25)
+    SprintfBoolean-2         82.2ns ± 9%  80.7ns ± 2%    ~     (p=0.163 n=24+24)
+    SprintfHexString-2        240ns ± 5%   224ns ± 2%  -6.94%  (p=0.000 n=25+25)
+    SprintfHexBytes-2         245ns ± 3%   234ns ± 2%  -4.55%  (p=0.000 n=25+25)
+    SprintfBytes-2            432ns ±13%   419ns ± 2%    ~     (p=0.081 n=23+25)
+    SprintfStringer-2         356ns ± 4%   356ns ± 4%    ~     (p=0.988 n=25+25)
+    SprintfStructure-2        968ns ± 5%   948ns ± 2%  -2.11%  (p=0.000 n=25+25)
+    FprintInt-2               206ns ± 0%   201ns ± 0%  -2.43%  (p=0.000 n=25+21)
+    FprintfBytes-2            187ns ± 1%   187ns ± 1%    ~     (p=0.420 n=25+25)
+    FprintIntNoAlloc-2        173ns ± 0%   168ns ± 0%  -2.89%  (p=0.000 n=25+2
+    
+    amd64 Ivy Bridge:
+    
+    name                     old time/op  new time/op  delta
+    SprintfPadding-4          203ns ± 4%   210ns ± 8%  +3.27%  (p=0.000 n=23+25)
+    SprintfEmpty-4           24.4ns ± 2%  24.4ns ± 3%    ~     (p=0.487 n=24+25)
+    SprintfString-4          92.4ns ± 2%  93.1ns ± 3%    ~     (p=0.087 n=22+25)
+    SprintfTruncateString-4   137ns ± 3%   136ns ± 2%  -1.02%  (p=0.002 n=25+25)
+    SprintfQuoteString-4      378ns ± 1%   373ns ± 1%  -1.32%  (p=0.000 n=24+22)
+    SprintfInt-4             89.9ns ± 3%  90.3ns ± 4%    ~     (p=0.444 n=25+25)
+    SprintfIntInt-4           137ns ± 4%   138ns ± 3%    ~     (p=0.112 n=25+23)
+    SprintfPrefixedInt-4      155ns ±14%   154ns ±14%    ~     (p=0.791 n=25+25)
+    SprintfFloat-4            154ns ± 2%   154ns ± 3%    ~     (p=0.789 n=25+25)
+    SprintfComplex-4          396ns ± 2%   402ns ± 3%  +1.53%  (p=0.001 n=23+25)
+    SprintfBoolean-4         71.0ns ± 3%  71.2ns ± 2%    ~     (p=0.515 n=25+24)
+    SprintfHexString-4        156ns ± 3%   150ns ± 5%  -3.69%  (p=0.000 n=24+25)
+    SprintfHexBytes-4         154ns ± 3%   157ns ± 5%  +1.72%  (p=0.003 n=24+25)
+    SprintfBytes-4            297ns ± 4%   291ns ± 3%  -1.86%  (p=0.000 n=25+25)
+    SprintfStringer-4         275ns ± 3%   265ns ± 3%  -3.51%  (p=0.000 n=25+25)
+    SprintfStructure-4        878ns ± 2%   823ns ± 2%  -6.21%  (p=0.000 n=25+22)
+    FprintInt-4               145ns ± 1%   147ns ± 2%  +0.94%  (p=0.001 n=23+25)
+    FprintfBytes-4            166ns ± 1%   168ns ± 2%  +0.81%  (p=0.000 n=24+25)
+    FprintIntNoAlloc-4        113ns ± 2%   109ns ± 2%  -3.79%  (p=0.000 n=24+25)
+    
+    386 Ivy Bridge:
+    
+    name                     old time/op  new time/op  delta
+    SprintfPadding-4          353ns ± 4%   354ns ± 4%    ~     (p=0.769 n=25+24)
+    SprintfEmpty-4           21.9ns ± 6%  21.1ns ± 3%  -3.45%  (p=0.000 n=24+25)
+    SprintfString-4          94.7ns ± 1%  93.0ns ± 3%  -1.77%  (p=0.000 n=24+23)
+    SprintfTruncateString-4   150ns ± 2%   147ns ± 0%  -1.71%  (p=0.000 n=25+21)
+    SprintfQuoteString-4      472ns ± 1%   479ns ± 1%  +1.48%  (p=0.000 n=25+23)
+    SprintfInt-4             87.0ns ± 2%  85.3ns ± 2%  -1.95%  (p=0.000 n=25+25)
+    SprintfIntInt-4           137ns ± 2%   134ns ± 2%  -1.97%  (p=0.000 n=24+23)
+    SprintfPrefixedInt-4      166ns ± 8%   161ns ± 8%  -3.07%  (p=0.023 n=24+24)
+    SprintfFloat-4            226ns ± 1%   219ns ± 1%  -2.97%  (p=0.000 n=24+25)
+    SprintfComplex-4          867ns ± 1%   784ns ± 1%  -9.47%  (p=0.000 n=24+23)
+    SprintfBoolean-4         77.2ns ± 2%  76.0ns ± 2%  -1.63%  (p=0.000 n=25+25)
+    SprintfHexString-4        212ns ± 2%   214ns ± 2%  +0.96%  (p=0.000 n=25+25)
+    SprintfHexBytes-4         221ns ± 2%   218ns ± 1%  -1.42%  (p=0.000 n=25+24)
+    SprintfBytes-4            423ns ± 3%   417ns ± 1%  -1.49%  (p=0.000 n=25+24)
+    SprintfStringer-4         306ns ± 3%   298ns ± 3%  -2.57%  (p=0.000 n=24+25)
+    SprintfStructure-4       1.00µs ± 2%  0.98µs ± 2%  -1.34%  (p=0.000 n=24+24)
+    FprintInt-4               202ns ± 3%   197ns ± 2%  -2.04%  (p=0.000 n=25+25)
+    FprintfBytes-4            186ns ± 2%   184ns ± 2%  -0.88%  (p=0.000 n=24+25)
+    FprintIntNoAlloc-4        170ns ± 2%   166ns ± 2%  -2.26%  (p=0.000 n=24+25)
+    
+    Change-Id: I46e62bf8b6afa90a24f75b40f1d354b2084b910b
+    Reviewed-on: https://go-review.googlesource.com/20984
+    Run-TryBot: Rob Pike <r@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Rob Pike <r@golang.org>
+
+commit 7f52b43954d75aa0c444d57b9d0eb7ff36eb3dd0
+Author: Conrad Irwin <conrad.irwin@gmail.com>
+Date:   Fri Feb 19 10:12:44 2016 -0800
+
+    net/mail: allow utf-8 in ParseAddress
+    
+    The existing implementation correctly supported RFC 5322, this
+    change adds support for UTF-8 while parsing as specified by
+    RFC 6532. The serialization code is unchanged, so emails created
+    by go remain compatible with very legacy systems.
+    
+    Fixes #14260
+    
+    Change-Id: Ib57e510f5834d273605e1892679f2df19ea931b1
+    Reviewed-on: https://go-review.googlesource.com/19687
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Alexandre Cesaro <alexandre.cesaro@gmail.com>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 89a1f02834f1472cf307b222e14884ebd41086d3
+Author: Ilya Tocar <ilya.tocar@intel.com>
+Date:   Tue Apr 12 18:14:45 2016 +0300
+
+    hash/adler32: Unroll loop for extra performance.
+    
+    name         old time/op    new time/op    delta
+    Adler32KB-4     592ns ± 0%     447ns ± 0%  -24.49%  (p=0.000 n=19+20)
+    
+    name         old speed      new speed      delta
+    Adler32KB-4  1.73GB/s ± 0%  2.29GB/s ± 0%  +32.41%  (p=0.000 n=20+20)
+    
+    Change-Id: I38990aa66ca4452a886200018a57c0bc3af30717
+    Reviewed-on: https://go-review.googlesource.com/21880
+    Reviewed-by: Keith Randall <khr@golang.org>
+    Run-TryBot: Ilya Tocar <ilya.tocar@intel.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 8955745bfb9a3682e78b71fb8cb343abc4bd72a6
+Author: Martin Möhrmann <martisch@uos.de>
+Date:   Fri Apr 15 08:56:01 2016 +0200
+
+    image/color: order color computation to match rgb
+    
+    The order of computation was switched unintentionally
+    in https://go-review.googlesource.com/21910.
+    
+    Revert the order to first compute g then b.
+    
+    Change-Id: I8cedb5e45fbad2679246839f609bcac4f9052403
+    Reviewed-on: https://go-review.googlesource.com/22016
+    Reviewed-by: Nigel Tao <nigeltao@golang.org>
+
+commit 0da4dbe2322eb3b6224df35ce3e9fc83f104762b
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Thu Apr 14 19:09:36 2016 -0700
+
+    all: remove unnecessary type conversions
+    
+    cmd and runtime were handled separately, and I'm intentionally skipped
+    syscall. This is the rest of the standard library.
+    
+    CL generated mechanically with github.com/mdempsky/unconvert.
+    
+    Change-Id: I9e0eff886974dedc37adb93f602064b83e469122
+    Reviewed-on: https://go-review.googlesource.com/22104
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 80e7dddffafa6c5eb8e98d642b87546eb8e445ab
+Author: Nigel Tao <nigeltao@golang.org>
+Date:   Fri Apr 15 16:29:43 2016 +1000
+
+    compress/flate: fix a fmt.Fprintf style nit in a test.
+    
+    It's not a big deal (the for loop drops from 130-ish to 120-ish
+    milliseconds for me) but it's not a big change either.
+    
+    Change-Id: I161a49caab5cae5a2b87866ed1dfb93627be8013
+    Reviewed-on: https://go-review.googlesource.com/22110
+    Reviewed-by: Klaus Post <klauspost@gmail.com>
+    Reviewed-by: Nigel Tao <nigeltao@golang.org>
+
+commit 106b9d391518fe382162559e1520a8af72564130
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Thu Apr 14 19:44:55 2016 -0700
+
+    cmd/internal/obj, cmd/link: random style cleanups
+    
+    Identified during review of golang.org/cl/22103.
+    
+    Change-Id: I86bab4cc17204df1e45deefdb0d0f9a8f6e17073
+    Reviewed-on: https://go-review.googlesource.com/22106
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 1441f76938bf61a2c8c2ed1a65082ddde0319633
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Thu Apr 14 19:04:45 2016 -0700
+
+    cmd: remove unnecessary type conversions
+    
+    CL generated mechanically with github.com/mdempsky/unconvert.
+    
+    Change-Id: Ic590315cbc7026163a1b3f8ea306ba35f1a53256
+    Reviewed-on: https://go-review.googlesource.com/22103
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Michael Hudson-Doyle <michael.hudson@canonical.com>
+
+commit e7b96e1a1f1ead0d5def61f339e446c3afefa617
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Thu Apr 14 18:51:18 2016 -0700
+
+    cmd/internal/sys: cleanup documentation
+    
+    Expand description of ArchFamily, because it seems to be a common
+    source of confusion.  Also, update InFamily's description to reflect
+    current name.
+    
+    Change-Id: I66b7999aef64ab8fee39aec0f752ae4f3a08d36d
+    Reviewed-on: https://go-review.googlesource.com/22102
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 1d214f7062e80bebb081cdfad2ceda3e5bd0de29
+Author: Mikio Hara <mikioh.mikioh@gmail.com>
+Date:   Wed Apr 13 06:19:53 2016 +0900
+
+    net: cache IPv6 zone information for applications using IPv6 link-local address
+    
+    This change reduces the overhead of calling routing information per IPv6
+    link-local datagram read by caching IPv6 addressing scope zone
+    information.
+    
+    Fixes #15237.
+    
+    name                    old time/op    new time/op    delta
+    UDP6LinkLocalUnicast-8    64.9µs ± 0%    18.6µs ± 0%  -71.30%
+    
+    name                    old alloc/op   new alloc/op   delta
+    UDP6LinkLocalUnicast-8    11.2kB ± 0%     0.2kB ± 0%  -98.42%
+    
+    name                    old allocs/op  new allocs/op  delta
+    UDP6LinkLocalUnicast-8       101 ± 0%         3 ± 0%  -97.03%
+    
+    Change-Id: I5ae2ef5058df1028bbb7f4ab32b13edfb330c3a7
+    Reviewed-on: https://go-review.googlesource.com/21952
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 19db74566491dcbb4dc2ad0a92b98aa2c28dd8fe
+Author: Mikio Hara <mikioh.mikioh@gmail.com>
+Date:   Thu Apr 14 16:31:52 2016 +0900
+
+    net: relax TestInterfaces and TestInterfaceAddrs for BSD variants
+    
+    Fixes #15249.
+    
+    Change-Id: I91fc3d6a2df294b21a67d085da6fe661827a850e
+    Reviewed-on: https://go-review.googlesource.com/22079
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 77d374940e87935a2cc46a60591ec8213003e99a
+Author: Todd Neal <todd@tneal.org>
+Date:   Thu Apr 14 19:09:57 2016 -0400
+
+    cmd/compile: speed up dom checking in cse
+    
+    Process a slice of equivalent values by setting replaced values to nil
+    instead of removing them from the slice to eliminate copying.  Also take
+    advantage of the entry number sort to break early once we reach a value
+    in a block that is not dominated.
+    
+    For the code in issue #15112:
+    
+    Before:
+    real    0m52.603s
+    user    0m56.957s
+    sys     0m1.213s
+    
+    After:
+    real    0m22.048s
+    user    0m26.445s
+    sys     0m0.939s
+    
+    Updates #15112
+    
+    Change-Id: I06d9e1e1f1ad85d7fa196c5d51f0dc163907376d
+    Reviewed-on: https://go-review.googlesource.com/22068
+    Reviewed-by: David Chase <drchase@google.com>
+
+commit d0e8d3a7ae2194b1753bc4e419d5f00aa2d5cb86
+Author: Joe Tsai <joetsai@digital-static.net>
+Date:   Sat Apr 2 16:47:51 2016 -0700
+
+    compress/gzip: fix Reader to properly check FHCRC
+    
+    RFC 1952, section 3.2.3 says:
+    >>>
+    If FHCRC is set, a CRC16 for the gzip header is present,
+    immediately before the compressed data. The CRC16 consists of the two
+    least significant bytes of the CRC32 for all bytes of the
+    gzip header up to and not including the CRC16.
+    <<<
+    
+    Thus, instead of computing the CRC only over the first 10 bytes
+    of the header, we compute it over the whole header (minus CRC16).
+    
+    Fixes #15070
+    
+    Change-Id: I55703fd30b535b12abeb5e3962d4da0a86ed615a
+    Reviewed-on: https://go-review.googlesource.com/21466
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit d093a6269160cf94b7add76dc3e60e94d8afc44e
+Author: Andrew Gerrand <adg@golang.org>
+Date:   Thu Apr 14 12:12:11 2016 +1000
+
+    doc: add classes to version tags in source install instructions
+    
+    This will allow us to mechanically substitute these strings
+    using javascript (in a forthcoming change to x/tools/godoc).
+    
+    Updates #14371
+    
+    Change-Id: I96e876283060ffbc9f3eabaf55d6b880685453e1
+    Reviewed-on: https://go-review.googlesource.com/22055
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 5c593a3227d97f5d2afa66a39b6dd8ea6ebf73f3
+Author: Robert Griesemer <gri@golang.org>
+Date:   Wed Apr 13 17:53:03 2016 -0700
+
+    cmd/compile: first cut at exporting position info
+    
+    - position info for all exported globals, plus methods and fields
+    - use delta-encoded line number info in most cases
+    - canonicalize all strings: each filename appears only once,
+      but will also compact other strings (names) to at most one
+      occurence in encoding
+    - positions not yet hooked up when reading in
+    
+    Also:
+    - adjusted go/importer (gcimporter)
+    - some refactoring for better symmetry
+    
+    Stats:
+    - comparison of export data size w/o and w/ position info (bytes).
+    - delta is increase in %
+    - overall (see bottom of table): 14% increase
+    - however, the current binary format decreased from
+      the original binary format last week by 14%
+    - compared to original textual format: 65% decrease
+      (increase by 14% after decrease by 14% still leads
+      to a decrease from original textual format)
+    
+    (caveat: we used the textual size from last week, assuming
+    it has not changed - there may be a small error here).
+    
+    package				w/o pos	w/ pos	delta
+    
+    archive/tar			4234	4902	16%
+    archive/zip			6387	7340	15%
+    bufio				3106	3419	10%
+    bytes				4362	4757	9%
+    cmd/addr2line			27	70	159%
+    cmd/api				12065	13590	13%
+    cmd/asm				27	64	137%
+    cmd/asm/internal/arch		9957	11529	16%
+    cmd/asm/internal/asm		11788	13385	14%
+    cmd/asm/internal/flags		239	311	30%
+    cmd/asm/internal/lex		13415	15358	14%
+    cmd/cgo				13064	15006	15%
+    cmd/compile			27	67	148%
+    cmd/compile/internal/amd64	461	869	89%
+    cmd/compile/internal/arm	5963	7273	22%
+    cmd/compile/internal/arm64	363	657	81%
+    cmd/compile/internal/big	7186	8590	20%
+    cmd/compile/internal/gc		48242	56234	17%
+    cmd/compile/internal/mips64	367	666	81%
+    cmd/compile/internal/ppc64	372	721	94%
+    cmd/compile/internal/s390x	330	569	72%
+    cmd/compile/internal/ssa	30464	35058	15%
+    cmd/compile/internal/x86	429	770	79%
+    cmd/cover			3984	4731	19%
+    cmd/dist			74	154	108%
+    cmd/doc				7272	8591	18%
+    cmd/expdump			27	71	163%
+    cmd/fix				342	419	23%
+    cmd/go				8126	9520	17%
+    cmd/gofmt			27	70	159%
+    cmd/gofmt2			27	69	156%
+    cmd/gofmt2/internal/format	702	856	22%
+    cmd/gofmt2/internal/lexical	2954	3509	19%
+    cmd/gofmt2/internal/parse	6185	7295	18%
+    cmd/gofmt2/internal/syntax	3533	4738	34%
+    cmd/gofmt2/internal/test	540	615	14%
+    cmd/internal/bio		5395	6060	12%
+    cmd/internal/gcprog		533	663	24%
+    cmd/internal/goobj		1022	1277	25%
+    cmd/internal/obj		10951	12825	17%
+    cmd/internal/obj/arm		8612	9985	16%
+    cmd/internal/obj/arm64		15814	17638	12%
+    cmd/internal/obj/mips		10928	12487	14%
+    cmd/internal/obj/ppc64		13576	15277	13%
+    cmd/internal/obj/s390x		16513	18708	13%
+    cmd/internal/obj/x86		21152	23482	11%
+    cmd/internal/objfile		14442	16505	14%
+    cmd/internal/pprof/commands	1663	1885	13%
+    cmd/internal/pprof/driver	9517	10789	13%
+    cmd/internal/pprof/fetch	7632	8635	13%
+    cmd/internal/pprof/plugin	13150	14809	13%
+    cmd/internal/pprof/profile	7004	8248	18%
+    cmd/internal/pprof/report	7763	8942	15%
+    cmd/internal/pprof/svg		1332	1534	15%
+    cmd/internal/pprof/symbolizer	7376	8439	14%
+    cmd/internal/pprof/symbolz	6970	7976	14%
+    cmd/internal/pprof/tempfile	3645	4093	12%
+    cmd/internal/sys		505	619	23%
+    cmd/internal/unvendor/golang.org/x/arch/arm/armasm	73951	79188	7%
+    cmd/internal/unvendor/golang.org/x/arch/x86/x86asm	10140	11738	16%
+    cmd/link			27	64	137%
+    cmd/link/internal/amd64		9317	11034	18%
+    cmd/link/internal/arm		110	213	94%
+    cmd/link/internal/arm64		112	219	96%
+    cmd/link/internal/ld		53524	60149	12%
+    cmd/link/internal/mips64	113	222	96%
+    cmd/link/internal/ppc64		113	220	95%
+    cmd/link/internal/s390x		112	219	96%
+    cmd/link/internal/x86		110	212	93%
+    cmd/nm				27	61	126%
+    cmd/objdump			27	68	152%
+    cmd/pack			4141	4688	13%
+    cmd/pprof			27	67	148%
+    cmd/trace			624	842	35%
+    cmd/vet				11194	13140	17%
+    cmd/vet/internal/whitelist	52	113	117%
+    cmd/yacc			1141	1317	15%
+    compress/bzip2			2101	2484	18%
+    compress/flate			3619	4336	20%
+    compress/gzip			6261	7111	14%
+    compress/lzw			276	401	45%
+    compress/zlib			3630	4158	15%
+    container/heap			187	250	34%
+    container/list			1370	1506	10%
+    container/ring			466	546	17%
+    context				3005	3338	11%
+    crypto				728	856	18%
+    crypto/aes			181	321	77%
+    crypto/cipher			744	1163	56%
+    crypto/des			220	320	45%
+    crypto/dsa			4526	4990	10%
+    crypto/ecdsa			5341	5982	12%
+    crypto/elliptic			4969	5593	13%
+    crypto/hmac			188	250	33%
+    crypto/md5			560	706	26%
+    crypto/rand			4218	4746	13%
+    crypto/rc4			214	321	50%
+    crypto/rsa			5648	6355	13%
+    crypto/sha1			597	751	26%
+    crypto/sha256			228	351	54%
+    crypto/sha512			354	484	37%
+    crypto/subtle			586	621	6%
+    crypto/tls			20909	23438	12%
+    crypto/x509			14862	16857	13%
+    crypto/x509/pkix		8384	9278	11%
+    database/sql			6721	7715	15%
+    database/sql/driver		1243	1535	23%
+    debug/dwarf			7867	9153	16%
+    debug/elf			25479	28025	10%
+    debug/gosym			1887	2267	20%
+    debug/macho			7222	8846	22%
+    debug/pe			6921	8081	17%
+    debug/plan9obj			1084	1319	22%
+    encoding			217	280	29%
+    encoding/ascii85		587	722	23%
+    encoding/asn1			1043	1268	22%
+    encoding/base32			929	1112	20%
+    encoding/base64			1166	1368	17%
+    encoding/binary			2168	2410	11%
+    encoding/csv			3761	4203	12%
+    encoding/gob			11304	12936	14%
+    encoding/hex			510	606	19%
+    encoding/json			9965	11395	14%
+    encoding/pem			202	266	32%
+    encoding/xml			11817	13361	13%
+    errors				126	170	35%
+    expvar				930	1142	23%
+    flag				5905	6519	10%
+    fmt				1027	1190	16%
+    go/ast				12910	15541	20%
+    go/build			5460	6173	13%
+    go/constant			1645	1816	10%
+    go/doc				3107	3882	25%
+    go/format			1416	1729	22%
+    go/importer			1426	1668	17%
+    go/internal/gccgoimporter	1624	2028	25%
+    go/internal/gcimporter		2650	3095	17%
+    go/parser			6220	7073	14%
+    go/printer			1924	2306	20%
+    go/scanner			3137	3602	15%
+    go/token			3053	3474	14%
+    go/types			21793	25561	17%
+    hash				234	327	40%
+    hash/adler32			465	553	19%
+    hash/crc32			668	817	22%
+    hash/crc64			630	727	15%
+    hash/fnv			1413	1582	12%
+    html				76	114	50%
+    html/template			14382	16457	14%
+    image				10248	11409	11%
+    image/color			2247	2562	14%
+    image/color/palette		107	169	58%
+    image/draw			2313	2494	8%
+    image/gif			3079	3450	12%
+    image/internal/imageutil	3136	3456	10%
+    image/jpeg			2349	2735	16%
+    image/png			2404	2695	12%
+    index/suffixarray		4978	5596	12%
+    internal/race			225	278	24%
+    internal/singleflight		551	697	26%
+    internal/syscall/windows/sysdll	97	166	71%
+    internal/testenv		4488	5052	13%
+    internal/trace			1392	1680	21%
+    io				2811	3318	18%
+    io/ioutil			3988	4467	12%
+    log				3532	3907	11%
+    log/syslog			4247	4775	12%
+    math				3021	4499	49%
+    math/big			7250	8456	17%
+    math/cmplx			1034	1617	56%
+    math/rand			734	885	21%
+    mime				1889	2194	16%
+    mime/multipart			4313	4849	12%
+    mime/quotedprintable		1758	1996	14%
+    net				15686	18617	19%
+    net/http			42182	47848	13%
+    net/http/cgi			19496	21768	12%
+    net/http/cookiejar		4615	5248	14%
+    net/http/fcgi			17758	19771	11%
+    net/http/httptest		26108	29350	12%
+    net/http/httputil		20732	23286	12%
+    net/http/internal		2195	2497	14%
+    net/http/pprof			17596	19545	11%
+    net/internal/socktest		1689	2153	27%
+    net/mail			4328	4810	11%
+    net/rpc				24328	27249	12%
+    net/rpc/jsonrpc			11052	12438	13%
+    net/smtp			17127	19174	12%
+    net/textproto			3705	4329	17%
+    net/url				1193	1371	15%
+    os				8493	10113	19%
+    os/exec				6625	7532	14%
+    os/signal			137	236	72%
+    os/user				529	761	44%
+    path				295	372	26%
+    path/filepath			3452	3952	14%
+    reflect				5091	6028	18%
+    regexp				4848	5585	15%
+    regexp/syntax			2590	3076	19%
+    runtime				8721	11598	33%
+    runtime/cgo			17	17	0%
+    runtime/debug			2721	3130	15%
+    runtime/internal/atomic		569	704	24%
+    runtime/internal/sys		1874	2318	24%
+    runtime/pprof			478	582	22%
+    runtime/race			18	18	0%
+    runtime/trace			95	146	54%
+    sort				1052	1215	15%
+    strconv				1389	1667	20%
+    strings				3372	3772	12%
+    sync				946	1371	45%
+    sync/atomic			962	1079	12%
+    syscall				41574	45613	10%
+    testing				6184	7243	17%
+    testing/iotest			883	1116	26%
+    testing/quick			4659	5443	17%
+    text/scanner			2930	3269	12%
+    text/tabwriter			2333	2607	12%
+    text/template			13335	15274	15%
+    text/template/parse		8270	9285	12%
+    time				4687	5313	13%
+    unicode				3831	4355	14%
+    unicode/utf16			530	584	10%
+    unicode/utf8			872	946	8%
+    vendor/golang.org/x/net/http2/hpack	3386	3970	17%
+    
+    				1295440	1481566	14%
+    orig. textual			4253585	1481566	-65%
+    orig. binary			1724071	1481566 -14%
+    
+    Change-Id: I4177c6511cc57ebe5eb80c89bf3aefc83376ce86
+    Reviewed-on: https://go-review.googlesource.com/22096
+    Reviewed-by: Matthew Dempsky <mdempsky@google.com>
+
+commit ac8127d7e6ead390bc44c89d47d16be587c3ac11
+Author: Keith Randall <khr@golang.org>
+Date:   Thu Apr 14 13:47:58 2016 -0700
+
+    cmd/compile: fix register size for ODOTPTR result
+    
+    The result of ODOTPTR, as well as a bunch of other ops,
+    should be the type of the result, not always a pointer type.
+    
+    This fixes an amd64p32 bug where we were incorrectly truncating
+    a 64-bit slice index to 32 bits, and then barfing on a weird
+    load-64-bits-but-then-truncate-to-32-bits op that doesn't exist.
+    
+    Fixes #15252
+    
+    Change-Id: Ie62f4315fffd79f233e5449324ccc0879f5ac343
+    Reviewed-on: https://go-review.googlesource.com/22094
+    Run-TryBot: Keith Randall <khr@golang.org>
+    Reviewed-by: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 7c7081f514c9ec4820a842f7ef07394df4d41bab
+Author: Austin Clements <austin@google.com>
+Date:   Wed Apr 13 15:12:32 2016 -0400
+
+    sync/atomic: don't atomically write pointers twice
+    
+    sync/atomic.StorePointer (which is implemented in
+    runtime/atomic_pointer.go) writes the pointer twice (through two
+    completely different code paths, no less). Fix it to only write once.
+    
+    Change-Id: Id3b2aef9aa9081c2cf096833e001b93d3dd1f5da
+    Reviewed-on: https://go-review.googlesource.com/21999
+    Run-TryBot: Austin Clements <austin@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Reviewed-by: Michael Matloob <matloob@golang.org>
+    Reviewed-by: Rick Hudson <rlh@golang.org>
+
+commit 8f6c35de2f7c972a4f34efddd21281b7060c4457
+Author: Austin Clements <austin@google.com>
+Date:   Wed Apr 13 15:06:01 2016 -0400
+
+    runtime: make sync_atomic_SwapPointer signature match sync/atomic
+    
+    SwapPointer is declared as
+    
+      func SwapPointer(addr *unsafe.Pointer, new unsafe.Pointer) (old unsafe.Pointer)
+    
+    in sync/atomic, but defined in the runtime (where it's actually
+    implemented) as
+    
+      func sync_atomic_SwapPointer(ptr unsafe.Pointer, new unsafe.Pointer) unsafe.Pointer
+    
+    Make ptr a *unsafe.Pointer in the runtime definition to match the type
+    in sync/atomic.
+    
+    Change-Id: I99bab651b995001bbe54f9e790fdef2417ef0e9e
+    Reviewed-on: https://go-review.googlesource.com/21998
+    Run-TryBot: Austin Clements <austin@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Reviewed-by: Michael Matloob <matloob@golang.org>
+
+commit 98b6febcef8f6d7411a77e9e828df681871a28ad
+Author: Keith Randall <khr@golang.org>
+Date:   Thu Apr 14 10:28:35 2016 -0700
+
+    runtime/internal/sys: better fallback algorithms for intrinsics
+    
+    Use deBruijn sequences to count low-order zeros.
+    Reorg bswap to not use &^, it takes another instruction on x86.
+    
+    Change-Id: I4a5ed9fd16ee6a279d88c067e8a2ba11de821156
+    Reviewed-on: https://go-review.googlesource.com/22084
+    Reviewed-by: David Chase <drchase@google.com>
+
+commit 12e3b184f0fe15787be7f0837d2b168a4fbe60be
+Author: Michael Hudson-Doyle <michael.hudson@canonical.com>
+Date:   Fri Apr 8 15:06:04 2016 +1200
+
+    cmd/go: deduplicate gccgo afiles by package path, not *Package
+    
+    This code was fixed a while ago to ensure that xtest and fake packages came
+    first on the link line, but golang.org/cl/16775 added --whole-archive ...
+    --no-whole-archive around all the .a files and rendered this fix useless.
+    
+    So, take a different approach and only put one .a file on the linker command
+    line for each ImportPath we see while traversing the action graph, not for each
+    *Package we see. The way we walk the graph ensures that we'll see the .a files
+    that need to be first first.
+    
+    Change-Id: I137f00f129ccc9fc99f40eee885cc04cc358a62e
+    Reviewed-on: https://go-review.googlesource.com/21692
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit e5463f5055d590046a451a115ceac7b58b3f825f
+Author: Michael Hudson-Doyle <michael.hudson@canonical.com>
+Date:   Thu Jan 21 14:53:55 2016 +1300
+
+    cmd/go: fix "#cgo pkg-config:" comments with gccgo
+    
+    The unique difficulty of #cgo pkg-config is that the linker flags are recorded
+    when the package is compiled but (obviously) must be used when the package is
+    linked into an executable -- so the flags need to be stored on disk somewhere.
+    As it happens cgo already writes out a _cgo_flags file: nothing uses it
+    currently, but this change adds it to the lib$pkg.a file when compiling a
+    package, reads it out when linking (and passes a version of the .a file with
+    _cgo_flags stripped out of it to the linker). It's all fairly ugly but it works
+    and I can't really think of any way of reducing the essential level of
+    ugliness.
+    
+    Fixes #11739
+    
+    Change-Id: I35621878014e1e107eda77a5b0b23d0240ec5750
+    Reviewed-on: https://go-review.googlesource.com/18790
+    Run-TryBot: Michael Hudson-Doyle <michael.hudson@canonical.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 096c900f9edbe7138e1683c8740e5e94b97d6b83
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Thu Apr 14 12:41:54 2016 -0700
+
+    crypto/aes: fix vet warnings in gcm_amd64.s
+    
+    Notably, this fixes two incorrect argument sizes.
+    
+    Update #11041
+    
+    Change-Id: Ie4a3b1a59cd6a6707f6d2f4d3be978fc70322b46
+    Reviewed-on: https://go-review.googlesource.com/22091
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 6372c821c7cada20e662f9cc37f5d1c202a6b5fe
+Author: Ian Lance Taylor <iant@golang.org>
+Date:   Wed Apr 13 21:44:35 2016 -0700
+
+    doc: GCC 6 will have the Go 1.6.1 user libraries
+    
+    Update #14759.
+    
+    Change-Id: I8a174aad721beb62380e10071d9648b6b1c21b8c
+    Reviewed-on: https://go-review.googlesource.com/22072
+    Run-TryBot: Ian Lance Taylor <iant@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Andrew Gerrand <adg@golang.org>
+
+commit c9638810df5c0ab7e15a0856f0ddddf4b3afbba6
+Author: David Crawshaw <crawshaw@golang.org>
+Date:   Thu Apr 14 08:54:15 2016 -0400
+
+    cmd/compile: use type. prefix on importpath symbol
+    
+    This ensures that importpath symbols are treated like other type data
+    and end up in the same section under all build modes.
+    
+    Fixes: go test -buildmode=pie reflect
+    
+    Change-Id: Ibb8348648e8dcc850f2424d206990a06090ce4c6
+    Reviewed-on: https://go-review.googlesource.com/22081
+    Run-TryBot: David Crawshaw <crawshaw@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Ian Lance Taylor <iant@golang.org>
+
+commit 644493f1090e965cbde3e3245bc8b12bb5486477
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Thu Apr 14 08:48:36 2016 -0700
+
+    cmd/compile: clear hidden value at end of channel range body
+    
+    While we’re here, clean up a few comments.
+    
+    Fixes #15281
+    
+    Change-Id: Ia6173e9941133db08f57bc80bdd3c5722122bfdb
+    Reviewed-on: https://go-review.googlesource.com/22082
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: David Chase <drchase@google.com>
+
+commit 24bd465bca145320bffd5b06e11da105226a1eae
+Author: Michael Munday <munday@ca.ibm.com>
+Date:   Thu Apr 14 14:07:59 2016 -0400
+
+    test: use correct value in error message in init1.go
+    
+    Print numGC followed by numGC1, rather than printing numGC twice.
+    
+    Change-Id: I8e7144b6a11d4ae9be0d82d88b86fed04b906e2f
+    Reviewed-on: https://go-review.googlesource.com/22087
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 02b8e6978a86c2f4f3a604e8b05014d127f4020a
+Author: Jeremy Jackins <jeremyjackins@gmail.com>
+Date:   Wed Apr 13 18:16:21 2016 +0900
+
+    runtime: find a home for orphaned comments
+    
+    These comments were left behind after runtime.h was converted
+    from C to Go. I examined the original code and tried to move these
+    to the places that the most sense.
+    
+    Change-Id: I8769d60234c0113d682f9de3bd8d6c34c450c188
+    Reviewed-on: https://go-review.googlesource.com/21969
+    Reviewed-by: Matthew Dempsky <mdempsky@google.com>
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 980146bfde2b4e2d62c537023c19670666fc0604
+Author: Michael Munday <munday@ca.ibm.com>
+Date:   Thu Apr 14 13:29:37 2016 -0400
+
+    crypto/cipher: enable fastXORBytes on s390x
+    
+    s390x can handle unaligned loads and stores of 64-bit values.
+    
+    Change-Id: Iae5621781e3ba56e27b4a1f4788772c86e4f6475
+    Reviewed-on: https://go-review.googlesource.com/22086
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 6b0b3f86d6b3c2cf01c7ed6080e038bda2c12997
+Author: David Chase <drchase@google.com>
+Date:   Wed Apr 13 13:30:03 2016 -0400
+
+    cmd/compile: fix use of original spill name after sinking
+    
+    This is a fix for the ssacheck builder
+    http://build.golang.org/log/baa00f70c34e41186051cfe90568de3d91f115d7
+    after CL 21307 for sinking spills down loop exits
+    https://go-review.googlesource.com/#/c/21037/
+    
+    The fix is to reuse (move) the original spill, thus preserving
+    the definition of the variable and its use count. Original and
+    copy both use the same stack slot, but ssacheck needs to see
+    a definition for the variable itself.
+    
+    Fixes #15279.
+    
+    Change-Id: I286285490193dc211b312d64dbc5a54867730bd6
+    Reviewed-on: https://go-review.googlesource.com/21995
+    Reviewed-by: Keith Randall <khr@golang.org>
+    Run-TryBot: David Chase <drchase@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit 170c1b479bcd089eb8f76c8de6e5d44c6c4dbaa8
+Author: Alan Donovan <adonovan@google.com>
+Date:   Thu Apr 14 13:41:32 2016 -0400
+
+    go/types: record CallExpr result type even if argument is invalid
+    
+    + test
+    
+    Fixes #15305
+    
+    Change-Id: Ica657c00c92f0b19f0df7452cdbe5a95d23cc8a4
+    Reviewed-on: https://go-review.googlesource.com/22085
+    Reviewed-by: Robert Griesemer <gri@golang.org>
+
+commit 67cdec00c256d817fc3d2c099fa1830c8f446923
+Author: Josh Bleecher Snyder <josharian@gmail.com>
+Date:   Thu Apr 14 09:39:40 2016 -0700
+
+    cmd/vet: teach asm checker about PEXTRD’s op size
+    
+    Fixes #15271
+    
+    Change-Id: I28e3fb5bde1e6fd5b263b1434873b8ce051aee97
+    Reviewed-on: https://go-review.googlesource.com/22083
+    Run-TryBot: Josh Bleecher Snyder <josharian@gmail.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Rob Pike <r@golang.org>
+
+commit 045411e6f28c64e6448a2432fa652cc80ca18f31
+Author: Matthew Dempsky <mdempsky@google.com>
+Date:   Tue Apr 12 17:58:46 2016 -0700
+
+    cmd/internal/obj: remove use of package bio
+    
+    Also add MustClose and MustWriter to cmd/internal/bio, and use them in
+    cmd/asm.
+    
+    Change-Id: I07f5df3b66c17bc5b2e6ec9c4357d9b653e354e0
+    Reviewed-on: https://go-review.googlesource.com/21938
+    Run-TryBot: Matthew Dempsky <mdempsky@google.com>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit b623b71509b2d24df915d5bc68602e1c6edf38ca
+Author: Adam Langley <agl@golang.org>
+Date:   Tue Apr 12 11:14:25 2016 -0700
+
+    crypto/x509: don't add an AuthorityKeyId to self-signed certificates.
+    
+    The AuthorityKeyId is optional for self-signed certificates, generally
+    useless, and takes up space. This change causes an AuthorityKeyId not to
+    be added to self-signed certificates, although it can still be set in
+    the template if the caller really wants to include it.
+    
+    Fixes #15194.
+    
+    Change-Id: If5d3c3d9ca9ae5fe67458291510ec7140829756e
+    Reviewed-on: https://go-review.googlesource.com/21895
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Adam Langley <agl@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+
+commit eede112492174c8b0f72845e6ac9edf1bd481f41
+Author: Adam Langley <agl@golang.org>
+Date:   Tue Apr 12 10:43:44 2016 -0700
+
+    crypto/tls: make error prefix uniform.
+    
+    Error strings in this package were all over the place: some were
+    prefixed with “tls:”, some with “crypto/tls:” and some didn't have a
+    prefix.
+    
+    This change makes everything use the prefix “tls:”.
+    
+    Change-Id: Ie8b073c897764b691140412ecd6613da8c4e33a2
+    Reviewed-on: https://go-review.googlesource.com/21893
+    Reviewed-by: Brad Fitzpatrick <bradfitz@golang.org>
+    Run-TryBot: Brad Fitzpatrick <bradfitz@golang.org>
+
+commit 8d8feb4d2fdb9c09821c4dc84e164e4c86d283ff
+Author: Luan Santos <cfcluan@gmail.com>
+Date:   Wed Apr 13 08:10:41 2016 -0700
+
+    cmd/vet: allow untyped composite literals to be unkeyed
+    
+    We can trust that untyped composite literals are part of a slice literal
+    and not emit a vet warning for those.
+    
+    Fixes #9171
+    
+    Change-Id: Ia7c081e543b850f8be1fd1f9e711520061e70bed
+    Reviewed-on: https://go-review.googlesource.com/22000
+    Run-TryBot: Rob Pike <r@golang.org>
+    TryBot-Result: Gobot Gobot <gobot@golang.org>
+    Reviewed-by: Rob Pike <r@golang.org>
