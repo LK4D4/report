@@ -86,7 +86,7 @@ func (gp gopath) RunBenchmark(pkg string) ([]byte, error) {
 	if err := gp.GoGet(pkg); err != nil {
 		return nil, err
 	}
-	cmd := exec.Command("go", "test", "-bench=.", "-benchmem", pkg)
+	cmd := exec.Command("go", "test", "-bench='(^BenchmarkMsgp)|EasyJson|Gogoprotobuf|Flat'", "-benchmem", pkg)
 	gp.setGopath(cmd)
 	var stderr bytes.Buffer
 	var stdout bytes.Buffer
