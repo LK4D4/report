@@ -44,26 +44,26 @@ func (r report) writeComparison(w io.Writer) error {
 func (r report) Bytes() ([]byte, error) {
 	var b bytes.Buffer
 	diffs := r.getDiffReport()
-	b.WriteString("Compilation time:\n")
+	b.WriteString("## Compilation time\n\n")
 	for i, d := range diffs.dr {
-		line := fmt.Sprintf("\t* %s: from %v to %v, %s\n", d.name, avgDuration(r.oldResults[i]), avgDuration(r.newResults[i]), getStringPercents(d.compileDiffRel))
+		line := fmt.Sprintf("* %s: from %v to %v, %s\n", d.name, avgDuration(r.oldResults[i]), avgDuration(r.newResults[i]), getStringPercents(d.compileDiffRel))
 		b.WriteString(line)
 	}
 	b.WriteString("\n")
-	b.WriteString("Binary size:\n")
+	b.WriteString("## Binary size:\n\n")
 	for i, d := range diffs.dr {
-		line := fmt.Sprintf("\t* %s: from %v to %v, %s\n", d.name, r.oldResults[i].BinarySize, r.newResults[i].BinarySize, getStringPercents(d.sizeDiffRel))
+		line := fmt.Sprintf("* %s: from %v to %v, %s\n", d.name, r.oldResults[i].BinarySize, r.newResults[i].BinarySize, getStringPercents(d.sizeDiffRel))
 		b.WriteString(line)
 	}
 	b.WriteString("\n")
-	b.WriteString("Bechmarks:\n")
-	b.Write(r.newBenchmark)
-	b.WriteString("\n")
+	b.WriteString("## Bechmarks:\n\n")
+	b.WriteString("```\n")
 	if err := r.writeComparison(&b); err != nil {
 		return nil, err
 	}
+	b.WriteString("```")
 	b.WriteString("\n")
-	b.WriteString("Highlights: \n")
+	b.WriteString("## Highlights: \n\n")
 	b.WriteString("\t<-------------------HIGHLIGHTS HERE---------------------->\n")
 	b.WriteString("\n")
 	return b.Bytes(), nil

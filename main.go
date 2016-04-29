@@ -21,9 +21,9 @@ var testPackages = []string{
 	"github.com/mholt/caddy",
 }
 
-const bencmark = "github.com/alecthomas/go_serialization_benchmarks"
+const benchmark = "github.com/alecthomas/go_serialization_benchmarks"
 
-const defaultReportName = "report.txt"
+const defaultReportName = "report.md"
 
 func main() {
 	if len(os.Args) != 3 {
@@ -46,7 +46,7 @@ func main() {
 		log.Fatalf("build report: %v", err)
 	}
 
-	oldBench, err := gp.RunBenchmark(bencmark)
+	oldBench, err := gp.RunBenchmark(benchmark)
 	if err != nil {
 		log.Fatalf("benchmark run: %v", err)
 	}
@@ -63,7 +63,7 @@ func main() {
 		log.Fatalf("build report: %v", err)
 	}
 
-	newBench, err := gp.RunBenchmark(bencmark)
+	newBench, err := gp.RunBenchmark(benchmark)
 	if err != nil {
 		log.Fatalf("benchmark run: %v", err)
 	}
@@ -89,6 +89,8 @@ func writeReport(name string, gr goroot, report report) error {
 		log.Fatalf("get git log: %v", err)
 	}
 	var b bytes.Buffer
+	y, m, d := time.Now().Date()
+	b.WriteString(fmt.Sprintf("# %s %d, %d Report", m, d, y))
 	b.WriteString(fmt.Sprintf("Number of commits: %d\n", gl.cnt))
 	b.WriteString("\n")
 	bts, err := report.Bytes()
@@ -97,7 +99,10 @@ func writeReport(name string, gr goroot, report report) error {
 	}
 	b.Write(bts)
 	b.WriteString("\n")
+	b.WriteString("## GIT Log\n\n")
+	b.WriteString("```\n")
 	b.Write(gl.log)
+	b.WriteString("```")
 	return ioutil.WriteFile(name, b.Bytes(), 0666)
 }
 
