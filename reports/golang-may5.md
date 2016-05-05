@@ -1,4 +1,6 @@
-# May 5, 2016 ReportNumber of commits: 137
+# May 5, 2016 Report
+
+Number of commits: 137
 
 ## Compilation time
 
