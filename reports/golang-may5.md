@@ -57,7 +57,6 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 
 ## Highlights: 
 
-* [dev.garbage: create new dev.garbage branch](https://github.com/golang/go/commit/830ce3f1ed2771a94ed768816304ce2dd1017da0)
 * [os/exec: add Cmd.RunContext and Cmd.WaitContext](https://github.com/golang/go/commit/2cc27a7de9e7d14cb6702153688d02746c6a49ea)
 * [os/exec: fix variable shadow, don't leak goroutine](https://github.com/golang/go/commit/1b591dfb1f071d978448966e979e40b1f265c1a5)
 * [net/http, net/http/httptrace: new package for tracing HTTP client requests](https://github.com/golang/go/commit/1518d431321100cd9f0e18d740da7c835ba438dd) 
