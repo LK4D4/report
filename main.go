@@ -90,7 +90,7 @@ func writeReport(name string, gr goroot, report report) error {
 	}
 	var b bytes.Buffer
 	y, m, d := time.Now().Date()
-	b.WriteString(fmt.Sprintf("# %s %d, %d Report", m, d, y))
+	b.WriteString(fmt.Sprintf("# %s %d, %d Report\n\n", m, d, y))
 	b.WriteString(fmt.Sprintf("Number of commits: %d\n", gl.cnt))
 	b.WriteString("\n")
 	bts, err := report.Bytes()
