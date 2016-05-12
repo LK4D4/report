@@ -54,12 +54,12 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 
 ## Highlights: 
 
-* [runtime: print signal name in panic, if name is known](1a7fc2357b1c26dcdf4fa57dee67a1172696801f)
-* [crypto/sha256: Use AVX2 if possible](2210d88a889e0ea463bcdef2b658aaec1050cf01)
-* [crypto/sha1: Add AVX2 version for AMD64](fafadc521ede90f8abed73e8d209e130c456e983)
-* [time: don't depend on the io package](d88261fb6581106e4e7d8d6c63f0e33c2a24361e)
-* [encoding/json: support maps with integer keys](f05c3aa24d815cd3869153750c9875e35fc48a6e)
-* [crypto/sha1: disable crashing AVX2 optimizations for now](78ff74375930d5ae391beae562c91da40e5d92a4)
+* [runtime: print signal name in panic, if name is known](https://github.com/golang/go/commit/1a7fc2357b1c26dcdf4fa57dee67a1172696801f)
+* [crypto/sha256: Use AVX2 if possible](https://github.com/golang/go/commit/2210d88a889e0ea463bcdef2b658aaec1050cf01)
+* [crypto/sha1: Add AVX2 version for AMD64](https://github.com/golang/go/commit/fafadc521ede90f8abed73e8d209e130c456e983)
+* [time: don't depend on the io package](https://github.com/golang/go/commit/d88261fb6581106e4e7d8d6c63f0e33c2a24361e)
+* [encoding/json: support maps with integer keys](https://github.com/golang/go/commit/f05c3aa24d815cd3869153750c9875e35fc48a6e)
+* [crypto/sha1: disable crashing AVX2 optimizations for now](https://github.com/golang/go/commit/78ff74375930d5ae391beae562c91da40e5d92a4)
 
 
 ## GIT Log
