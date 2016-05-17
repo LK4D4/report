@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const samplesCount = 5
+const samplesCount = 1
 
 var testPackages = []string{
 	"github.com/coreos/etcd",
