@@ -12,7 +12,7 @@ import (
 const samplesCount = 1
 
 var testPackages = []string{
-	"github.com/coreos/etcd",
+	"github.com/coreos/etcd/cmd",
 	"github.com/boltdb/bolt/cmd/bolt",
 	"github.com/gogits/gogs",
 	"github.com/spf13/hugo",
