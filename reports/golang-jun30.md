@@ -55,7 +55,7 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 ```
 ## Highlights: 
 
-* [cmd/go: restore support for git submodules and update docs](069289180816e2f8b40ad6f9e167dc5071cefcdf)
+* [cmd/go: restore support for git submodules and update docs](https://github.com/golang/go/commit/069289180816e2f8b40ad6f9e167dc5071cefcdf)
 
 
 ## GIT Log
