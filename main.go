@@ -1,8 +1,6 @@
 package main
 
 import (
-	"bytes"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -41,6 +39,11 @@ func main() {
 	}
 	gr := newGoroot()
 
+	commits, err := gr.getGitLog(os.Args[1], os.Args[2])
+	if err != nil {
+		log.Fatalf("get git log: %v", err)
+	}
+
 	log.Printf("Switch go to %s", os.Args[1])
 	oldDur, err := gr.switchRevision(os.Args[1])
 	if err != nil {
@@ -67,14 +70,14 @@ func main() {
 	if err != nil {
 		log.Fatalf("build report: %v", err)
 	}
-
 	newBench, err := gp.RunBenchmark(benchmark)
 	if err != nil {
 		log.Fatalf("benchmark run: %v", err)
 	}
 
-	report := report{
+	rep := report{
 		gp:               gp,
+		commits:          commits,
 		oldGoCompileTime: oldDur,
 		newGoCompileTime: newDur,
 		oldResults:       oldResults,
@@ -82,33 +85,18 @@ func main() {
 		oldBenchmark:     oldBench,
 		newBenchmark:     newBench,
 	}
-	if err := writeReport(defaultReportName, gr, report); err != nil {
+	if err := writeReport(defaultReportName, rep); err != nil {
 		log.Fatalf("write report file: %v", err)
 	}
 	log.Println("report build:", time.Since(start))
 }
 
-func writeReport(name string, gr goroot, report report) error {
-	gl, err := gr.getGitLog(os.Args[1], os.Args[2])
-	if err != nil {
-		log.Fatalf("get git log: %v", err)
-	}
-	var b bytes.Buffer
-	y, m, d := time.Now().Date()
-	b.WriteString(fmt.Sprintf("# %s %d, %d Report\n\n", m, d, y))
-	b.WriteString(fmt.Sprintf("Number of commits: %d\n", gl.cnt))
-	b.WriteString("\n")
-	bts, err := report.Bytes()
+func writeReport(name string, rep report) error {
+	repBts, err := rep.Bytes()
 	if err != nil {
 		return err
 	}
-	b.Write(bts)
-	b.WriteString("\n")
-	b.WriteString("## GIT Log\n\n")
-	b.WriteString("```\n")
-	b.Write(gl.log)
-	b.WriteString("```")
-	return ioutil.WriteFile(name, b.Bytes(), 0666)
+	return ioutil.WriteFile(name, repBts, 0666)
 }
 
 func initGopath(pkg ...string) (gopath, error) {
@@ -137,9 +125,9 @@ func initGopath(pkg ...string) (gopath, error) {
 	return gp, nil
 }
 
-func getResult(gp gopath, pkg ...string) ([]result, error) {
+func getResult(gp gopath, pkgs ...string) ([]result, error) {
 	var results []result
-	for _, pkg := range testPackages {
+	for _, pkg := range pkgs {
 		res, err := gp.RunTest(pkg, samplesCount)
 		if err != nil {
 			return nil, err

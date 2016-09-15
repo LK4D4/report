@@ -46,8 +46,8 @@ func (gr goroot) switchRevision(rev string) (time.Duration, error) {
 }
 
 type gitLog struct {
-	cnt int
-	log []byte
+	N   int
+	Log []byte
 }
 
 func (gr goroot) getGitLog(old, new string) (gitLog, error) {
@@ -62,7 +62,7 @@ func (gr goroot) getGitLog(old, new string) (gitLog, error) {
 	if err != nil {
 		return gl, err
 	}
-	gl.cnt = cnt
+	gl.N = cnt
 
 	logCmd := exec.Command("git", "log", old+".."+new)
 	logCmd.Dir = gr.path
@@ -70,6 +70,6 @@ func (gr goroot) getGitLog(old, new string) (gitLog, error) {
 	if err != nil {
 		return gl, fmt.Errorf("git log: %v, out: %s", err, out)
 	}
-	gl.log = out
+	gl.Log = out
 	return gl, nil
 }
