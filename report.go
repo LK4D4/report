@@ -16,6 +16,7 @@ type report struct {
 	newResults       []result
 	oldBenchmark     []byte
 	newBenchmark     []byte
+	commits          gitLog
 }
 
 func getStringPercents(rel float64) string {
@@ -43,6 +44,12 @@ func (r report) writeComparison(w io.Writer) error {
 
 func (r report) Bytes() ([]byte, error) {
 	var b bytes.Buffer
+
+	y, m, d := time.Now().Date()
+	b.WriteString(fmt.Sprintf("# %s %d, %d Report\n\n", m, d, y))
+	b.WriteString(fmt.Sprintf("Number of commits: %d\n", r.commits.N))
+	b.WriteString("\n")
+
 	diffs := r.getDiffReport()
 	b.WriteString("## Compilation time\n\n")
 	for i, d := range diffs.dr {
@@ -66,6 +73,12 @@ func (r report) Bytes() ([]byte, error) {
 	b.WriteString("## Highlights: \n\n")
 	b.WriteString("\t<-------------------HIGHLIGHTS HERE---------------------->\n")
 	b.WriteString("\n")
+
+	b.WriteString("## GIT Log\n\n")
+	b.WriteString("```\n")
+	b.Write(r.commits.Log)
+	b.WriteString("```\n")
+
 	return b.Bytes(), nil
 }
 
