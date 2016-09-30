@@ -11,7 +11,7 @@ const samplesCount = 1
 
 var testPackages = []string{
 	"github.com/boltdb/bolt/cmd/bolt",
-	"github.com/coreos/etcd",
+	//"github.com/coreos/etcd",
 	"github.com/gogits/gogs",
 	"github.com/grafana/grafana/pkg/cmd/grafana-server",
 	"github.com/influxdata/influxdb/cmd/influxd",
