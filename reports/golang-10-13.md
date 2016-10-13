@@ -65,8 +65,8 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 ```
 ## Highlights: 
 
-* [cmd/compile: fix choice of phi building algorithm](433be563b6246eb132aed6e9e58f46a0d46f7010)
-* [cmd/compile,runtime: redo how map assignments work](442de98c14d49bf306ab880e9f9c898ca0ae7c19)
+* [cmd/compile: fix choice of phi building algorithm](https://github.com/golang/go/commit/433be563b6246eb132aed6e9e58f46a0d46f7010)
+* [cmd/compile,runtime: redo how map assignments work](https://github.com/golang/go/commit/442de98c14d49bf306ab880e9f9c898ca0ae7c19)
 
 ## GIT Log
 
