@@ -65,12 +65,12 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 ```
 ## Highlights: 
 
-* [sort: add Slice, SliceStable, and SliceIsSorted](22a2bdfedb95612984cec3141924953b88a607b7)
-* [all: use sort.Slice where applicable](ad26bb5e3098cbfd7c0ad9a1dc9d38c92e50f06e)
-* [runtime: make append only clear uncopied memory](c1e267cc734135a66af8a1a5015e572cbb598d44)
-* [encoding/csv: avoid allocations when reading records](bd06d4827ae637cd08f85962f996760e76e28efc)
-* [encoding/json: use standard ES6 formatting for numbers during marshal](92b3e3651dc44f54b458f171f641779f10fbaec0)
-* [runtime: improve memmove for amd64](d7507e9d1109da424dd375365dc923257ebd0c23)
+* [sort: add Slice, SliceStable, and SliceIsSorted](https://github.com/golang/go/commit/22a2bdfedb95612984cec3141924953b88a607b7)
+* [all: use sort.Slice where applicable](https://github.com/golang/go/commit/ad26bb5e3098cbfd7c0ad9a1dc9d38c92e50f06e)
+* [runtime: make append only clear uncopied memory](https://github.com/golang/go/commit/c1e267cc734135a66af8a1a5015e572cbb598d44)
+* [encoding/csv: avoid allocations when reading records](https://github.com/golang/go/commit/bd06d4827ae637cd08f85962f996760e76e28efc)
+* [encoding/json: use standard ES6 formatting for numbers during marshal](https://github.com/golang/go/commit/92b3e3651dc44f54b458f171f641779f10fbaec0)
+* [runtime: improve memmove for amd64](https://github.com/golang/go/commit/d7507e9d1109da424dd375365dc923257ebd0c23)
 
 ## GIT Log
 
