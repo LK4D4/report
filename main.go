@@ -11,17 +11,17 @@ const samplesCount = 1
 
 var testPackages = []string{
 	"github.com/boltdb/bolt/cmd/bolt",
-	//"github.com/coreos/etcd",
-	//"github.com/gogits/gogs",
-	//"github.com/grafana/grafana/pkg/cmd/grafana-server",
-	//"github.com/influxdata/influxdb/cmd/influxd",
+	"github.com/coreos/etcd",
+	"github.com/gogits/gogs",
+	"github.com/grafana/grafana/pkg/cmd/grafana-server",
+	"github.com/influxdata/influxdb/cmd/influxd",
 	"github.com/junegunn/fzf/src/fzf",
-	//"github.com/mholt/caddy/caddy",
-	//"github.com/monochromegane/the_platinum_searcher/cmd/pt",
-	//"github.com/nsqio/nsq/apps/nsqd",
-	//"github.com/prometheus/prometheus/cmd/prometheus",
-	//"github.com/spf13/hugo",
-	//"golang.org/x/tools/cmd/guru",
+	"github.com/mholt/caddy/caddy",
+	"github.com/monochromegane/the_platinum_searcher/cmd/pt",
+	"github.com/nsqio/nsq/apps/nsqd",
+	"github.com/prometheus/prometheus/cmd/prometheus",
+	"github.com/spf13/hugo",
+	"golang.org/x/tools/cmd/guru",
 }
 
 const benchmark = "github.com/alecthomas/go_serialization_benchmarks"
@@ -54,10 +54,10 @@ func main() {
 		log.Fatalf("build report: %v", err)
 	}
 
-	//oldBench, err := gp.RunBenchmark(benchmark)
-	//if err != nil {
-	//log.Fatalf("benchmark run: %v", err)
-	//}
+	oldBench, err := gp.RunBenchmark(benchmark)
+	if err != nil {
+		log.Fatalf("benchmark run: %v", err)
+	}
 
 	gp.CleanPkg()
 
@@ -70,10 +70,10 @@ func main() {
 	if err != nil {
 		log.Fatalf("build report: %v", err)
 	}
-	//newBench, err := gp.RunBenchmark(benchmark)
-	//if err != nil {
-	//log.Fatalf("benchmark run: %v", err)
-	//}
+	newBench, err := gp.RunBenchmark(benchmark)
+	if err != nil {
+		log.Fatalf("benchmark run: %v", err)
+	}
 
 	rep := report{
 		gp:               gp,
@@ -82,8 +82,8 @@ func main() {
 		newGoCompileTime: newDur,
 		oldResults:       oldResults,
 		newResults:       newResults,
-		//oldBenchmark:     oldBench,
-		//newBenchmark:     newBench,
+		oldBenchmark:     oldBench,
+		newBenchmark:     newBench,
 	}
 	if err := writeReport(defaultReportName, rep); err != nil {
 		log.Fatalf("write report file: %v", err)
