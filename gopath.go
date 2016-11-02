@@ -31,7 +31,7 @@ func (gp gopath) setGopath(cmd *exec.Cmd) {
 }
 
 func (gp gopath) GoGet(pkg ...string) error {
-	args := append([]string{"get", "-u", "-d", "-t"}, pkg...)
+	args := append([]string{"get", "-insecure", "-u", "-d", "-t"}, pkg...)
 	cmd := exec.Command("go", args...)
 	gp.setGopath(cmd)
 	out, err := cmd.CombinedOutput()

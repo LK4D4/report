@@ -62,14 +62,16 @@ func (r report) Bytes() ([]byte, error) {
 		line := fmt.Sprintf("* %s: from %v to %v, %s\n", d.name, r.oldResults[i].BinarySize, r.newResults[i].BinarySize, getStringPercents(d.sizeDiffRel))
 		b.WriteString(line)
 	}
-	b.WriteString("\n")
-	b.WriteString("## Bechmarks:\n\n")
-	b.WriteString("```\n")
-	if err := r.writeComparison(&b); err != nil {
-		return nil, err
+	if r.oldBenchmark != nil && r.newBenchmark != nil {
+		b.WriteString("\n")
+		b.WriteString("## Bechmarks:\n\n")
+		b.WriteString("```\n")
+		if err := r.writeComparison(&b); err != nil {
+			return nil, err
+		}
+		b.WriteString("```")
+		b.WriteString("\n")
 	}
-	b.WriteString("```")
-	b.WriteString("\n")
 	b.WriteString("## Highlights: \n\n")
 	b.WriteString("\t<-------------------HIGHLIGHTS HERE---------------------->\n")
 	b.WriteString("\n")
