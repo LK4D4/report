@@ -19,7 +19,7 @@ Number of commits: 226
 * [spec: add new language for alias declarations](https://github.com/golang/go/commit/aff37662d1f70f2bf9e47b4f962e85521e7c18d1)
 * [runtime: Profile goroutines holding contended mutexes.](https://github.com/golang/go/commit/ca922b6d363b6ca47822188dcbc5b92d912c7a4b)
 * [bytes, strings: optimize for ASCII sets](https://github.com/golang/go/commit/9a8c69539cbd052e2c4b55496d72ec8407c0af52)
-* [net: only remove Unix domain socket file on the first call to Close](13558c41ffa29d0af80e7e06d08af8eb0f0055fb)
+* [net: only remove Unix domain socket file on the first call to Close](https://github.com/golang/go/commit/13558c41ffa29d0af80e7e06d08af8eb0f0055fb)
 * [net: add (*UnixListener).SetUnlinkOnClose](https://github.com/golang/go/commit/eb88b3eefa113f67e7cf72dfd085f65bbd125179)
 * [runtime/pprof: write profiles in protobuf format.](https://github.com/golang/go/commit/b33030a72754cb55d6ec137e79facacb398c9be4)
 * [net/http: add Server.Close & Server.Shutdown for forced & graceful shutdown](https://github.com/golang/go/commit/53fc330e2d154443acf3d01e0d68bae22b2b7804)
