@@ -69,7 +69,7 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 * [time: optimize Now on darwin, windows](https://github.com/golang/go/commit/e4371fb179ad69cbd057f2430120843948e09f2f)
 * [runtime: implement fastrand in go](https://github.com/golang/go/commit/d03c1248604679e1e6a01253144065bc57da48b8)
 * [runtime: use two-level list for semaphore address search in semaRoot](https://github.com/golang/go/commit/45c6f59e1fd94ccb11fde61ca8d5b33b3d06dd9f)
-* [runtime: speed up fastrand(https://github.com/golang/go/commit/) % n](https://github.com/golang/go/commit/46a75870ad5b9b9711e69ffce3738a3ab2057789)
+* [runtime: speed up fastrand() % n](https://github.com/golang/go/commit/46a75870ad5b9b9711e69ffce3738a3ab2057789)
 * [os: use poller for file i/o](https://github.com/golang/go/commit/c05b06a12d005f50e4776095a60d6bd9c2c91fac)
 * [runtime: do not call wakep from enlistWorker, to avoid possible deadlock](https://github.com/golang/go/commit/1f77db94f8a453ae96e490fe729c8c6b0ba9479f)
 * [runtime: use balanced tree for addr lookup in semaphore implementation](https://github.com/golang/go/commit/990124da2a6ca5a54b38733b51018e2f8758cfae)
