@@ -13,7 +13,7 @@ var testPackages = []string{
 	"github.com/boltdb/bolt/cmd/bolt",
 	"github.com/coreos/etcd/cmd/etcd",
 	"github.com/grafana/grafana/pkg/cmd/grafana-server",
-	"github.com/influxdata/influxdb/cmd/influxd",
+	//"github.com/influxdata/influxdb/cmd/influxd",
 	"github.com/junegunn/fzf/src/fzf",
 	"github.com/mholt/caddy/caddy",
 	"github.com/monochromegane/the_platinum_searcher/cmd/pt",
