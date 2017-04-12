@@ -78,8 +78,8 @@ func (r report) Bytes() ([]byte, error) {
 
 	b.WriteString("## GIT Log\n\n")
 	b.WriteString("```\n")
-	b.Write(r.commits.Log)
-	b.WriteString("```\n")
+	b.WriteString(r.commits.Cmd)
+	b.WriteString("\n```\n")
 
 	return b.Bytes(), nil
 }
