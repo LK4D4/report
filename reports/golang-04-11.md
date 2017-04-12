@@ -63,9 +63,9 @@ BenchmarkGogoprotobufUnmarshal-4     96            96            +0.00%
 ```
 ## Highlights: 
 
-* [strings: optimize Count for amd64](d206af1e6c53df0c59d9466fe9c50415f9d8dcd5)
-* [testing: consider a test failed after race errors](221541ec8c4ec1b0ed0c6f26f5e13ca128e2a3cd)
-* [cmd/compile: make iface == iface const evaluation respect !=](b83a916f7186eb98636407c304974db34277aa2f)
+* [strings: optimize Count for amd64](https://github.com/golang/go/commit/d206af1e6c53df0c59d9466fe9c50415f9d8dcd5)
+* [testing: consider a test failed after race errors](https://github.com/golang/go/commit/221541ec8c4ec1b0ed0c6f26f5e13ca128e2a3cd)
+* [cmd/compile: make iface == iface const evaluation respect !=](https://github.com/golang/go/commit/b83a916f7186eb98636407c304974db34277aa2f)
 	* https://github.com/golang/go/issues/19911
 
 ## GIT Log
