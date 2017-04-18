@@ -10,17 +10,10 @@ import (
 const samplesCount = 1
 
 var testPackages = []string{
-	"github.com/boltdb/bolt/cmd/bolt",
 	"github.com/coreos/etcd/cmd/etcd",
 	"github.com/grafana/grafana/pkg/cmd/grafana-server",
-	//"github.com/influxdata/influxdb/cmd/influxd",
-	"github.com/junegunn/fzf/src/fzf",
-	"github.com/mholt/caddy/caddy",
-	"github.com/monochromegane/the_platinum_searcher/cmd/pt",
-	"github.com/nsqio/nsq/apps/nsqd",
 	"github.com/prometheus/prometheus/cmd/prometheus",
-	"github.com/spf13/hugo",
-	"golang.org/x/tools/cmd/guru",
+	"code.gitea.io/gitea",
 }
 
 const benchmark = "github.com/alecthomas/go_serialization_benchmarks"
