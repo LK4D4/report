@@ -51,8 +51,8 @@ BenchmarkGogoprotobufUnmarshal-8     96            96            +0.00%
 ```
 ## Highlights: 
 
-* [testing: add TB.Helper to better support test helpers](bc2931372243043842161c0a60bd2f86ef9696ee)
-* [sync: improve Pool performance](af5c95117b26e22d942a12e15bdc8e25607f738c)
+* [testing: add TB.Helper to better support test helpers](https://github.com/golang/go/commit/bc2931372243043842161c0a60bd2f86ef9696ee)
+* [sync: improve Pool performance](https://github.com/golang/go/commit/af5c95117b26e22d942a12e15bdc8e25607f738c)
 
 ## GIT Log
 
