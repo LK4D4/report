@@ -42,7 +42,7 @@ func (gp gopath) GoGet(pkg ...string) error {
 }
 
 func (gp gopath) GoInstall(pkg string) error {
-	cmd := exec.Command("go", "install", pkg)
+	cmd := exec.Command("go", "install", "-a", pkg)
 	gp.setGopath(cmd)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -52,7 +52,13 @@ func (gp gopath) GoInstall(pkg string) error {
 }
 
 func (gp gopath) CleanPkg() error {
-	return os.RemoveAll(filepath.Join(gp.path, "pkg"))
+	if err := os.RemoveAll(filepath.Join(gp.path, "pkg")); err != nil {
+		return err
+	}
+	if err := os.RemoveAll(filepath.Join(gp.path, "bin")); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (gp gopath) RunTest(pkg string, samples int) (result, error) {
