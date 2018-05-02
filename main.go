@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"io/ioutil"
 	"log"
 	"os"
@@ -21,9 +22,15 @@ const benchmark = "github.com/alecthomas/go_serialization_benchmarks"
 const defaultReportName = "report.md"
 
 func main() {
-	if len(os.Args) != 3 {
-		log.Fatalf("Usage: %s <start> <end>", os.Args[0])
+	revStart := flag.String("start", "",
+		`GOROOT git commit hash for "old" Go version`)
+	revEnd := flag.String("end", "master",
+		`GOROOT git commit hash for "new" Go version`)
+	flag.Parse()
+	if *revStart == "" || *revEnd == "" {
+		log.Fatalf("Empty start/end revision")
 	}
+
 	start := time.Now()
 	gp, err := initGopath(testPackages...)
 	if err != nil {
@@ -31,13 +38,13 @@ func main() {
 	}
 	gr := newGoroot()
 
-	commits, err := gr.getGitLog(os.Args[1], os.Args[2])
+	commits, err := gr.getGitLog(*revStart, *revEnd)
 	if err != nil {
 		log.Fatalf("get git log: %v", err)
 	}
 
-	log.Printf("Switch go to %s", os.Args[1])
-	oldDur, err := gr.switchRevision(os.Args[1])
+	log.Printf("Switch go to %s", *revStart)
+	oldDur, err := gr.switchRevision(*revStart)
 	if err != nil {
 		log.Fatalf("Go switch revision: %v", err)
 	}
@@ -53,8 +60,8 @@ func main() {
 
 	gp.CleanPkg()
 
-	log.Printf("Switch go to %s", os.Args[2])
-	newDur, err := gr.switchRevision(os.Args[2])
+	log.Printf("Switch go to %s", *revEnd)
+	newDur, err := gr.switchRevision(*revEnd)
 	if err != nil {
 		log.Fatalf("Go switch revision: %v", err)
 	}
